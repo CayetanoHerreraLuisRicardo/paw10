@@ -7,6 +7,7 @@ package tabique;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,15 +45,34 @@ public class autenticacion extends HttpServlet {
 
             usuarios.introducirUsuario("Jorgito", "Admin");
             usuarios.introducirUsuario("Javi", "Usuario");
-            
+
+            /**
+             * @TODO: deberiamos dejar los menos out.println posibles según el profe.
+             */
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet autenticacion</title>");  
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Autenticando usuario " +request.getParameter("nombre") + " como " + request.getParameter("rol") + "</h1>");
-            if (usuarios.autenticar(request.getParameter("nombre"), request.getParameter("rol")))
+            if (usuarios.autenticar(request.getParameter("nombre"), request.getParameter("rol"))){
                 out.println("<h3>Login correcto. ¡Bienvenido al Tabiqueeee " +request.getParameter("rol") + " "+request.getParameter("nombre") + " !</h3>");
+
+                //reenvio al jsp que le corresponda según el tipo de usuario
+                if (request.getParameter("rol").equals("Admin")){//administrador
+                    
+                    request.setAttribute("nombre", request.getParameter("nombre"));
+                    doGet(request, response);
+                }
+                else
+                    if (request.getParameter("rol").equals("Usuario")){//usuario registrado
+
+                    }
+                    else{//invitado
+                    }
+
+                
+            }
             else
                out.println("<h3>Acceso denegado al Tabiqueeee</h3>");
             out.println("</body>");
@@ -82,7 +102,11 @@ public class autenticacion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
+        RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
+
+        reqDispatcher.forward(request,response);
     } 
 
     /** 
