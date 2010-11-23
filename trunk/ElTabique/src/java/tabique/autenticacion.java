@@ -60,21 +60,33 @@ public class autenticacion extends HttpServlet {
 
                 //reenvio al jsp que le corresponda según el tipo de usuario
                 if (request.getParameter("rol").equals("Admin")){//administrador
-                    
-                    request.setAttribute("nombre", request.getParameter("nombre"));
-                    doGet(request, response);
+                     out.println("<h3>entra</h3>");
+                     RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
+
+                     //reqDispatcher.forward(request,response);
+                    /*
+                    out.println("<FORM action=\"/eltabique/pantallaAdmin.jsp\" method=\"get\">");
+                    out.println("<INPUT type=\"radio\" name=\"rol\" value=\"Admin\"> Administrador<BR>");
+                    out.println("<INPUT type=\"submit\" value=\"Enviar\">");
+                    out.println("</FORM>");
+                     
+                     */
+
                 }
                 else
+                    out.println("<h3>no entra</h3>");
+                    /*
                     if (request.getParameter("rol").equals("Usuario")){//usuario registrado
 
                     }
                     else{//invitado
                     }
 
-                
+                */
             }
             else
                out.println("<h3>Acceso denegado al Tabiqueeee</h3>");
+            
             out.println("</body>");
             out.println("</html>");
 
@@ -102,11 +114,9 @@ public class autenticacion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        //processRequest(request, response);
+        processRequest(request, response);
         
-        RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
-
-        reqDispatcher.forward(request,response);
+        
     } 
 
     /** 

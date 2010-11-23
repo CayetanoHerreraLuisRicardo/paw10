@@ -16,8 +16,8 @@
     <body>
         <h1>Pantalla de administrador</h1>
         <%
-        //String nom = request.getSession().getAtributte("nombre");
-        //out.println(nom);
+        //String nom = request.getSession().getAtributte("rol");
+        //out.println("pantalla de admin");
         %>
     </body>
 </html>
