@@ -15,5 +15,16 @@
     </head>
     <body>
         <h1>Pantalla de usuario registrado</h1>
+        <%
+        String rol = (String)request.getSession().getAttribute("rol");
+        String nombre = (String)request.getSession().getAttribute("nombre");
+
+        out.println(nombre);
+        out.println(rol);
+        //String info = AdminViewHelper.dameInfo(nom);
+
+        //Usuarios usuarios=AdminViewHelper.dameUsuarios(request);
+        //out.println("Bienvenido a su Tabique:"+usuarios.getRolUsuario("Jorgito"));
+        %>
     </body>
 </html>

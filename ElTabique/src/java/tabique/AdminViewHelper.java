@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
  * @author usuario_local
  */
 public class AdminViewHelper {
-    private static Usuarios usuarios;
+    private static Usuarios usu;
 
     public static Usuarios dameUsuarios(HttpServletRequest request){
         //usuarios = getInstance();
-        return usuarios;
+        return usu.getInstance();
     }
 
 

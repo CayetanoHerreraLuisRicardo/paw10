@@ -68,22 +68,26 @@ public class autenticacion extends HttpServlet {
 
                 //reenvio al jsp que le corresponda según el tipo de usuario
                 if (request.getParameter("rol").equals("Admin")){//administrador
-                     
+                    request.getSession().setAttribute("rol", request.getParameter("rol"));
+                    request.getSession().setAttribute("nombre", request.getParameter("nombre"));
                      RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
                      reqDispatcher.forward(request,response);
                 }
                 else
-                    
                     if (request.getParameter("rol").equals("Usuario")){//usuario registrado
+                        request.getSession().setAttribute("rol", request.getParameter("rol"));
+                        request.getSession().setAttribute("nombre", request.getParameter("nombre"));
                         RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaUsuarioRegistrado.jsp");
                         reqDispatcher.forward(request,response);
                     }
                     
             }
             else{//invitado
+                        request.getSession().setAttribute("rol", request.getParameter("rol"));
+                        request.getSession().setAttribute("nombre", request.getParameter("nombre"));
                         RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaInvitado.jsp");
                         reqDispatcher.forward(request,response);
-                }
+            }
             out.println("</body>");
             out.println("</html>");
    

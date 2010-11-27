@@ -4,6 +4,7 @@
     Author     : usuario_local
 --%>
 
+<%@page import="java.util.Enumeration"%>
 <%@page import="tabique.Usuarios"%>
 <%@page import="tabique.AdminViewHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,11 +19,15 @@
     <body>
         <h1>Pantalla de administrador</h1>
         <%
-        //String nom = request.getSession().getAtributte("rol");
-        //out.println("pantalla de admin");
-        %>
+        String rol = (String)request.getSession().getAttribute("rol");
+        String nombre = (String)request.getSession().getAttribute("nombre");
 
-        <% Usuarios usuarios=AdminViewHelper.dameUsuarios(request);
+        out.println(nombre);
+        out.println(rol);
+        //String info = AdminViewHelper.dameInfo(nom);
+
+        //Usuarios usuarios=AdminViewHelper.dameUsuarios(request);
+        //out.println("Bienvenido a su Tabique:"+usuarios.getRolUsuario("Jorgito"));
         %>
 
     </body>
