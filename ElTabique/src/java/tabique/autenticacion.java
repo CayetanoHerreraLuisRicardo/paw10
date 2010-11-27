@@ -56,45 +56,37 @@ public class autenticacion extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Autenticando usuario " +request.getParameter("nombre") + " como " + request.getParameter("rol") + "</h1>");
             if (usuarios.autenticar(request.getParameter("nombre"), request.getParameter("rol"))){
+                /**
+                 * 1)Para cada petición entrante
+                        1)Verificar que está autenticada
+                           si no está autenticada, crear un atributo de sesión y asignarle un 
+                             nombre arbitrario para esto. Si está a true, es que está autenticad
+                        2)Determinar la operación que nos piden y el tipo de usuario (parámetros de invocación)
+
+                 */
                 out.println("<h3>Login correcto. ¡Bienvenido al Tabiqueeee " +request.getParameter("rol") + " "+request.getParameter("nombre") + " !</h3>");
 
                 //reenvio al jsp que le corresponda según el tipo de usuario
                 if (request.getParameter("rol").equals("Admin")){//administrador
-                     out.println("<h3>entra</h3>");
-                     RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
-
-                     //reqDispatcher.forward(request,response);
-                    /*
-                    out.println("<FORM action=\"/eltabique/pantallaAdmin.jsp\" method=\"get\">");
-                    out.println("<INPUT type=\"radio\" name=\"rol\" value=\"Admin\"> Administrador<BR>");
-                    out.println("<INPUT type=\"submit\" value=\"Enviar\">");
-                    out.println("</FORM>");
                      
-                     */
-
+                     RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
+                     reqDispatcher.forward(request,response);
                 }
                 else
-                    out.println("<h3>no entra</h3>");
-                    /*
+                    
                     if (request.getParameter("rol").equals("Usuario")){//usuario registrado
-
+                        RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaUsuarioRegistrado.jsp");
+                        reqDispatcher.forward(request,response);
                     }
-                    else{//invitado
-                    }
-
-                */
+                    
             }
-            else
-               out.println("<h3>Acceso denegado al Tabiqueeee</h3>");
-            
+            else{//invitado
+                        RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaInvitado.jsp");
+                        reqDispatcher.forward(request,response);
+                }
             out.println("</body>");
             out.println("</html>");
-
-
-
-            
-
-            
+   
         } finally { 
             out.close();
         }
