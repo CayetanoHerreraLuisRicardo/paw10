@@ -29,7 +29,7 @@ public class Usuarios {
         boolean result = false;
 
         if (tablaUsu.containsKey(nombre)){
-            if (tablaUsu.get(nombre).equals(rol)){
+            if (tablaUsu.get(nombre).equals(rol) || tablaUsu.get(nombre).equals("Admin")){
                 result = true;
                 System.out.println("Autenticación correcta.");
             }
@@ -69,5 +69,12 @@ public class Usuarios {
                 System.out.println("El usuario no existe.");
 
         return result;
+    }
+
+    public String getRolUsuario(String nombre){
+        if (tablaUsu.containsKey(nombre))
+            return tablaUsu.get(nombre);
+        else
+            return "";
     }
 }
