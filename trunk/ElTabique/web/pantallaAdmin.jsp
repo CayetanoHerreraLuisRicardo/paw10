@@ -18,12 +18,40 @@
     </head>
     <body>
         <h1>Pantalla de administrador</h1>
+
+        <FORM action="/eltabique/GestionUsuarios" method="post">
+            <p>
+                <LABEL for="nombre">Nuevo Usuario: </LABEL>
+                <INPUT type="text" name="nombre">
+                <INPUT type="submit" name="addUser"value="Crear">
+            </p>
+        </FORM>
+
+
+        <FORM action="/eltabique/GestionUsuarios" method="post">
+            <p>
+                <LABEL for="nombre">Borrar Usuario: </LABEL>
+                <INPUT type="text" name="nombre">
+                <INPUT type="submit" name="deleteUser"value="Borrar">
+            </p>
+        </FORM>
+
+
         <%
                     String rol = (String) request.getSession().getAttribute("rol");
                     String nombre = (String) request.getSession().getAttribute("nombre");
 
-                    out.println(nombre);
-                    out.println(rol);
+
+                    AdminViewHelper helper = new AdminViewHelper();
+
+                    String codMensajes = helper.getCodigoHTML();
+
+                    out.println("<p>");
+                    out.println(codMensajes);
+                    out.println("</p>");
+
+                    //out.println(nombre);
+                    //out.println(rol);
                     //String info = AdminViewHelper.dameInfo(nom);
 
                     //Usuarios usuarios=AdminViewHelper.dameUsuarios(request);
