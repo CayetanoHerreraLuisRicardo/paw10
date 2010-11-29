@@ -4,9 +4,10 @@
     Author     : usuario_local
 --%>
 
+<%@page import="tabique.UsuarioRegistradoViewHelper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
     <head>
@@ -16,15 +17,28 @@
     <body>
         <h1>Pantalla de usuario registrado</h1>
         <%
-        String rol = (String)request.getSession().getAttribute("rol");
-        String nombre = (String)request.getSession().getAttribute("nombre");
+                    String rol = (String) request.getSession().getAttribute("rol");
+                    String nombre = (String) request.getSession().getAttribute("nombre");
 
-        out.println(nombre);
-        out.println(rol);
-        //String info = AdminViewHelper.dameInfo(nom);
+                    out.println(nombre);
+                    out.println(rol);
 
-        //Usuarios usuarios=AdminViewHelper.dameUsuarios(request);
-        //out.println("Bienvenido a su Tabique:"+usuarios.getRolUsuario("Jorgito"));
+
+                    UsuarioRegistradoViewHelper helper = new UsuarioRegistradoViewHelper();
+
+                    String codMensajes = helper.getCodigoHTML();
+
+                    out.println("<p>");
+                    out.println(codMensajes);
+                    out.println("</p>");
         %>
+
+
+        <form action="/eltabique/Salir" method="post">
+            <p>
+                <INPUT type="submit" value="Salir">
+            </p>
+        </form>
+
     </body>
 </html>
