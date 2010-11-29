@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package tabique;
 
 import java.util.ArrayList;
@@ -15,29 +14,34 @@ import java.util.Iterator;
  */
 public class UsuarioRegistradoViewHelper {
 
-    ListaMensajes lista;
+    DAOMensajes lista;
 
     public UsuarioRegistradoViewHelper() {
-        lista = new ListaMensajes();
-        lista.nuevoMensaje("Jorgito", "eres una warra y me voy ya");
-        lista.nuevoMensaje("Pepa", "te quiero chupar el pene");
+        lista = new DAOMensajes();
     }
 
-
-
-    public String getCodigoHTML(){
+    public String getCodigoHTML() {
         StringBuffer result = new StringBuffer();
+        //TODO:implementar con un comando
         ArrayList<Mensaje> men = lista.getMensajes();
         Iterator<Mensaje> itr = men.iterator();
 
         Mensaje mensaje;
         while (itr.hasNext()) {
             mensaje = itr.next();
-            result.append("Usuario "+mensaje.getEmisor()+": "+ mensaje.getTexto()+ " [" + mensaje.getFecha()+"] <br>");
+            result.append("Usuario " + mensaje.getEmisor() + ": " + mensaje.getTexto() + " [" + mensaje.getFecha() + "] <br>");
         }
 
 
         return result.toString();
     }
 
+    public void nuevoMensaje(String usuario, String rol, String mensaje) {
+
+        CommandFactory factoria = new CommandFactory();
+        Command comando = factoria.dameComando("Usuario", "AddMensaje");
+        ((CommandAddMensaje) comando).ejecutar(usuario, mensaje);
+
+
+    }
 }

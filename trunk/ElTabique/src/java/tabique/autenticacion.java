@@ -91,7 +91,7 @@ public class autenticacion extends HttpServlet {
 
             } else {//invitado
                 request.getSession().setAttribute("autenticado", "true");
-                request.getSession().setAttribute("rol", request.getParameter("rol"));
+                request.getSession().setAttribute("rol", "Invitado");
                 request.getSession().setAttribute("nombre", request.getParameter("nombre"));
                 //RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaInvitado.jsp");
                 //reqDispatcher.forward(request,response);
@@ -100,8 +100,8 @@ public class autenticacion extends HttpServlet {
                 out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
                 out.println("</head>");
                 out.println("<body>");
-                out.println("<h1>Autenticando usuario " + request.getParameter("nombre") + " como " + request.getParameter("rol") + "</h1>");
-                out.println("<h3>Login correcto. ¡Bienvenido al Tabiqueeee " + request.getParameter("rol") + " " + request.getParameter("nombre") + " !</h3>");
+                out.println("<h1>Autenticando usuario " + request.getParameter("nombre") + " como " + "Invitado" + "</h1>");
+                out.println("<h3>Invitado. ¡Bienvenido al Tabiqueeee " + "Invitado" + " " + request.getParameter("nombre") + " !</h3>");
             }
             out.println("</body>");
             out.println("</html>");

@@ -7,18 +7,23 @@ package tabique;
 
 /**
  *
- * @author jorge y javi
+ * @author jorge
  */
-public class CommandMuestrapantallaAdmin extends Command {
+public class CommandModifyUser extends Command {
 
     @Override
     public void ejecutar() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    public boolean ejecutar(String nombre, String rol) {
+        DAOUsuarios usuarios = new DAOUsuarios();
+        return usuarios.modificarUsuario(nombre, rol);
+    }
+
     @Override
     public boolean permisos(TipoUsuario tipo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (tipo == TipoUsuario.ADMIN);
     }
 
 }

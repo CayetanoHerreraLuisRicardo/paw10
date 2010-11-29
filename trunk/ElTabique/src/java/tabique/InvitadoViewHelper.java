@@ -15,12 +15,11 @@ import java.util.Iterator;
  */
 public class InvitadoViewHelper {
     
-    ListaMensajes lista;
+    DAOMensajes lista;
 
     public InvitadoViewHelper() {
-        lista = new ListaMensajes();
-        lista.nuevoMensaje("Jorgito", "eres una warra y me voy ya");
-        lista.nuevoMensaje("Pepa", "te quiero chupar el pene");
+
+        lista = new DAOMensajes();
     }
 
 
