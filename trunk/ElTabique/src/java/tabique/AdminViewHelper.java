@@ -36,7 +36,7 @@ public class AdminViewHelper {
             usuario = itr.next();
             result.append("<p>");
             result.append(usuario.nombre + ". Es " + usuario.rol + ". Convertir en: <br>");
-            result.append("<FORM action=\"/eltabique/GestionUsuarios\" method=\"post\">");
+            result.append("<FORM action=\"/eltabique/GestionUsuarios?user="+usuario.nombre+"\" method=\"post\">");
             result.append("<INPUT type=\"submit\" name=\"setUsuario\" value=\"Usuario\">");
             result.append("<INPUT type=\"submit\" name=\"setAdmin\" value=\"Admin\">");
             result.append("</FORM>");

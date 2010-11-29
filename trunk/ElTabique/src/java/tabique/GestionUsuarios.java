@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package tabique;
 
 import java.io.IOException;
@@ -17,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jorge
  */
-@WebServlet(name="GestionUsuarios", urlPatterns={"/GestionUsuarios"})
+@WebServlet(name = "GestionUsuarios", urlPatterns = {"/GestionUsuarios"})
 public class GestionUsuarios extends HttpServlet {
-   
+
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -28,22 +27,76 @@ public class GestionUsuarios extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet GestionUsuarios</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet GestionUsuarios at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
+            out.println("<title>Servlet GestionUsuarios</title>");
+
+            if (request.getParameter("addUser") != null) {
+                CommandFactory factoria = new CommandFactory();
+                Command comando = factoria.dameComando("Admin", "AddUser");
+                if (((CommandAddUser) comando).ejecutar(request.getParameter("nombre"), "Usuario")) {
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<font color=#00FF00>Usuario creado</font>");
+
+                } else {
+                    out.println("<font color=#E42217>Usuario ya existente</font>");
+                }
+                out.println("</head>");
+
+
+
+            } else if (request.getParameter("deleteUser") != null) {
+                CommandFactory factoria = new CommandFactory();
+                Command comando = factoria.dameComando("Admin", "DeleteUser");
+                if (((CommandDeleteUser) comando).ejecutar(request.getParameter("nombre"))) {
+
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<font color=#00FF00>Usuario borrado</font>");
+
+                } else {
+                    out.println("<font color=#E42217>Usuario no existente</font>");
+                }
+                out.println("</head>");
+            } else if (request.getParameter("setUsuario") != null) {
+                CommandFactory factoria = new CommandFactory();
+                Command comando = factoria.dameComando("Admin", "ModifyUser");
+                if (((CommandModifyUser) comando).ejecutar(request.getParameter("user"), "Usuario")) {
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<font color=#00FF00>Usuario modificado</font>");
+
+                } else {
+                    out.println("<font color=#E42217>Usuario no existente</font>");
+                }
+                out.println("</head>");
+
+            } else if (request.getParameter("setAdmin") != null) {
+                CommandFactory factoria = new CommandFactory();
+                Command comando = factoria.dameComando("Admin", "ModifyUser");
+                if (((CommandModifyUser) comando).ejecutar(request.getParameter("user"), "Admin")) {
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<font color=#00FF00>Usuario modificado</font>");
+
+                } else {
+                    out.println("<font color=#E42217>Usuario ya existente</font>");
+                }
+                out.println("</head>");
+
+            } else {
+                out.println("</head>");
+                out.println("<font color=#E42217>Error: Operación desconocida.</font>");
+
+            }
+
+
             out.println("</html>");
-        } finally { 
+        } finally {
             out.close();
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
@@ -55,9 +108,9 @@ public class GestionUsuarios extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
     /** 
      * Handles the HTTP <code>POST</code> method.
@@ -68,7 +121,7 @@ public class GestionUsuarios extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -80,5 +133,4 @@ public class GestionUsuarios extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
