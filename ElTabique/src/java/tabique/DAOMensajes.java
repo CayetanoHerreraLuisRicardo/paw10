@@ -10,25 +10,23 @@ import java.util.Date;
 
 /**
  *
- * @author jorge
+ * @author jorge y javi
  */
-public class ListaMensajes {
-    private ArrayList<Mensaje> listaMensajes;
+public class DAOMensajes {
 
-    public ListaMensajes() {
-        this.listaMensajes = new ArrayList<Mensaje>();
+    public DAOMensajes() {
+        
     }
 
 
     public void nuevoMensaje(String usuario,String mensaje){
-        Mensaje m = new Mensaje(usuario,mensaje);
-        listaMensajes.add(m);
+        Mensajes.getInstance().nuevoMensaje(usuario, mensaje);
 
     }
 
 
     public ArrayList<Mensaje> getMensajes(){
-        return listaMensajes;
+        return Mensajes.getInstance().getMensajes();
     }
 
 }

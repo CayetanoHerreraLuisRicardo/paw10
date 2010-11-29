@@ -16,12 +16,23 @@
     </head>
     <body>
         <h1>Pantalla de usuario registrado</h1>
+
+                        <form action="/eltabique/EnviarMensaje" method="post">
+            <p>
+                <LABEL for="mensaje">Mensaje: </LABEL>
+                <BR>
+                <TEXTAREA name="mensaje" COLS="40" ROWS="2"></TEXTAREA>
+                <BR>
+                <INPUT type="submit" value="Enviar">
+            </p>
+        </form>
+
         <%
                     String rol = (String) request.getSession().getAttribute("rol");
                     String nombre = (String) request.getSession().getAttribute("nombre");
 
-                    out.println(nombre);
-                    out.println(rol);
+                    //out.println(nombre);
+                    //out.println(rol);
 
 
                     UsuarioRegistradoViewHelper helper = new UsuarioRegistradoViewHelper();
@@ -32,6 +43,8 @@
                     out.println(codMensajes);
                     out.println("</p>");
         %>
+
+
 
 
         <form action="/eltabique/Salir" method="post">

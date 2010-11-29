@@ -7,18 +7,23 @@ package tabique;
 
 /**
  *
- * @author jorge y javi
+ * @author jorge
  */
-public class CommandMuestrapantallaUsuarioRegistrado extends Command {
+public class CommandDeleteUser extends Command {
 
     @Override
     public void ejecutar() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    public Boolean ejecutar(String nombre) {
+        DAOUsuarios usuarios = new DAOUsuarios();
+        return usuarios.borrarUsuario(nombre);
+    }
+
     @Override
     public boolean permisos(TipoUsuario tipo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (tipo == TipoUsuario.ADMIN);
     }
 
 }

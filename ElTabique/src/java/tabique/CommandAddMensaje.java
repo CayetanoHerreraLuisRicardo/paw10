@@ -7,18 +7,23 @@ package tabique;
 
 /**
  *
- * @author jorge y javi
+ * @author jorge
  */
-public class CommandMuestrapantallaInvitado extends Command {
+public class CommandAddMensaje extends Command {
 
     @Override
     public void ejecutar() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    public void ejecutar(String usuario, String mensaje) {
+        DAOMensajes mensajes = new DAOMensajes();
+        mensajes.nuevoMensaje(usuario, mensaje);
+    }
+
     @Override
     public boolean permisos(TipoUsuario tipo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return (tipo == TipoUsuario.USUARIO);
     }
 
 }
