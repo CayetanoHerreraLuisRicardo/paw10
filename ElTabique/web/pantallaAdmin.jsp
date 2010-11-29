@@ -19,6 +19,14 @@
     <body>
         <h1>Pantalla de administrador</h1>
 
+
+        <%
+                    String rol = (String) request.getSession().getAttribute("rol");
+                    String nombre = (String) request.getSession().getAttribute("nombre");
+
+
+        %>
+
         <FORM action="/eltabique/GestionUsuarios" method="post">
             <p>
                 <LABEL for="nombre">Nuevo Usuario: </LABEL>
@@ -38,10 +46,7 @@
 
 
         <%
-                    String rol = (String) request.getSession().getAttribute("rol");
-                    String nombre = (String) request.getSession().getAttribute("nombre");
-
-
+                    
                     AdminViewHelper helper = new AdminViewHelper();
 
                     String codMensajes = helper.getCodigoHTML();
