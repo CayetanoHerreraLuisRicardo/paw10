@@ -4,7 +4,11 @@
  */
 package tabique;
 
+import java.lang.String;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  *
@@ -86,4 +90,21 @@ public class Usuarios {
     public boolean existeUsuario(String nombre) {
         return tablaUsu.containsKey(nombre);
     }
+    
+    public ArrayList<Usuario> getListaUsuarios() {
+        ArrayList<Usuario> result = new ArrayList<Usuario>();
+
+        Set<String> claves = tablaUsu.keySet();
+        Iterator<String> iterator = claves.iterator();
+
+        while (iterator.hasNext()) {
+            String clave = iterator.next();
+            String valor = tablaUsu.get(clave);
+            result.add(new Usuario(clave,valor));
+
+        }
+        return result;
+        
+    }
+
 }

@@ -20,6 +20,7 @@ public class CommandFactory {
         comandos.put("CommandAddUser-Admin", new CommandAddUser());
         comandos.put("CommandDeleteUser-Admin", new CommandDeleteUser());
         comandos.put("CommandModifyUser-Admin", new CommandModifyUser());
+        comandos.put("CommandGetUsers-Admin", new CommandGetUsers());
 
 
     }

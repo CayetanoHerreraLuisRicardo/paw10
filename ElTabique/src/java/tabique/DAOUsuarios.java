@@ -4,6 +4,8 @@
  */
 package tabique;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author jorge y javi
@@ -38,4 +40,9 @@ public class DAOUsuarios {
         return result;
 
     }
+
+    public ArrayList<Usuario> getListaUsuarios() {
+        return Usuarios.getInstance().getListaUsuarios();
+    }
+
 }
