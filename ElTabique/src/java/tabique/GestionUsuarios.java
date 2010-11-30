@@ -38,11 +38,13 @@ public class GestionUsuarios extends HttpServlet {
             if (request.getParameter("addUser") != null) {
                 CommandFactory factoria = new CommandFactory();
                 Command comando = factoria.dameComando("Admin", "AddUser");
-                if (((CommandAddUser) comando).ejecutar(request.getParameter("nombre"), "Usuario")) {
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
-                    out.println("<font color=#00FF00>Usuario creado</font>");
-
+                if ( ! ((CommandAddUser) comando).existente(request.getParameter("nombre"))){
+                    if (((CommandAddUser) comando).ejecutar(request.getParameter("nombre"), "Usuario")) {
+                        out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                        out.println("<font color=#00FF00>Usuario creado</font>");
+                    }
                 } else {
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
                     out.println("<font color=#E42217>Usuario ya existente</font>");
                 }
                 out.println("</head>");
@@ -58,8 +60,21 @@ public class GestionUsuarios extends HttpServlet {
                     out.println("<font color=#00FF00>Usuario borrado</font>");
 
                 } else {
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
                     out.println("<font color=#E42217>Usuario no existente</font>");
                 }
+                out.println("</head>");
+            } else if (request.getParameter("setInvitado") != null)  {
+                //Nota: entedemos que cambiar a invitado es igual a borrar su rol anterior
+                CommandFactory factoria = new CommandFactory();
+                Command comando = factoria.dameComando("Admin", "ModifyUser");
+                if (((CommandModifyUser) comando).borrar(request.getParameter("user"))) {
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<font color=#00FF00>Usuario modificado</font>");
+                 } else {
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<font color=#E42217>Usuario no existente</font>");
+                    }
                 out.println("</head>");
             } else if (request.getParameter("setUsuario") != null) {
                 CommandFactory factoria = new CommandFactory();
@@ -69,6 +84,7 @@ public class GestionUsuarios extends HttpServlet {
                     out.println("<font color=#00FF00>Usuario modificado</font>");
 
                 } else {
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
                     out.println("<font color=#E42217>Usuario no existente</font>");
                 }
                 out.println("</head>");
@@ -81,12 +97,14 @@ public class GestionUsuarios extends HttpServlet {
                     out.println("<font color=#00FF00>Usuario modificado</font>");
 
                 } else {
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
                     out.println("<font color=#E42217>Usuario ya existente</font>");
                 }
                 out.println("</head>");
 
             } else {
                 out.println("</head>");
+                out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
                 out.println("<font color=#E42217>Error: Operación desconocida.</font>");
 
             }

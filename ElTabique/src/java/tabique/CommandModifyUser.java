@@ -21,6 +21,11 @@ public class CommandModifyUser extends Command {
         return usuarios.modificarUsuario(nombre, rol);
     }
 
+    public boolean borrar(String nombre){
+        DAOUsuarios usuarios = new DAOUsuarios();
+        return usuarios.borrarUsuario(nombre);
+    }
+
     @Override
     public boolean permisos(TipoUsuario tipo) {
         return (tipo == TipoUsuario.ADMIN);

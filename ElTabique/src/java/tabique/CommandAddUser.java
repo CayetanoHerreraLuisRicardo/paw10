@@ -21,6 +21,11 @@ public class CommandAddUser extends Command {
         return usuarios.introducirUsuario(nombre, rol);
     }
 
+    public boolean existente(String nombre){
+        DAOUsuarios usuarios = new DAOUsuarios();
+        return usuarios.existe(nombre);
+    }
+
     @Override
     public boolean permisos(TipoUsuario tipo) {
         return (tipo == TipoUsuario.ADMIN);

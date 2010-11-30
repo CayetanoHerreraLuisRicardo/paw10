@@ -45,4 +45,8 @@ public class DAOUsuarios {
         return Usuarios.getInstance().getListaUsuarios();
     }
 
+    public boolean existe(String nombre){
+        return Usuarios.getInstance().existeUsuario(nombre);
+    }
+
 }
