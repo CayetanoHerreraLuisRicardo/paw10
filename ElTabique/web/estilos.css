@@ -1,0 +1,28 @@
+/* 
+    Document   : estilos
+    Created on : 18-ene-2011, 14:20:51
+    Author     : usuario_local
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+/*
+root { 
+    display: block;
+}
+*/
+
+
+
+
+body {
+   background-color: #E3F2E1;  /* the background          */
+}
+h1 {
+    color: yellow;
+}
