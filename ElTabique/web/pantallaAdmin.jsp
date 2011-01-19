@@ -15,6 +15,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Administrador</title>
+                <LINK href="css/estilos.css" rel="stylesheet" type="text/css">
+
     </head>
     <body>
         <h1>Pantalla de administrador</h1>

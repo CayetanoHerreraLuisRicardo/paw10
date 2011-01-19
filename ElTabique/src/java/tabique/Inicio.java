@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author usuario_local
  */
-@WebServlet(name = "Inicio", urlPatterns = {"/"})
+@WebServlet(name = "Inicio", urlPatterns = {"/inicio"})
 public class Inicio extends HttpServlet {
 
     /** 
@@ -38,7 +38,7 @@ public class Inicio extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<title>El Tabique - Inicio de Sesión</title>");
-                out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"estilos.css\" />");
+                out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/estilos.css\" />");
 
                 out.println("</head>");
                 out.println("<body>");
