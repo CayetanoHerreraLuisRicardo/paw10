@@ -32,37 +32,8 @@ public class Inicio extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String atr = (String) request.getSession().getAttribute("autenticado");
         if (atr == null) {
-            PrintWriter out = response.getWriter();
-            try {
-
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>El Tabique - Inicio de Sesión</title>");
-                out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"css/estilos.css\" />");
-
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<h1>El Tabiqueeee </h1>");
-                out.println("<FORM action=\"/eltabique/autenticacion\" method=\"post\">");
-                out.println("<p>");
-                out.println("<LABEL for=\"nombre\">Nombre: </LABEL>");
-                out.println("<INPUT type=\"text\" name=\"nombre\"><BR>");
-                out.println("<br>");
-
-                out.println("<INPUT type=\"radio\" name=\"rol\" value=\"Invitado\"> Invitado<BR>");
-                out.println("<INPUT type=\"radio\" name=\"rol\" value=\"Usuario\"> Usuario Registrado<BR>");
-                out.println("<INPUT type=\"radio\" name=\"rol\" value=\"Admin\"> Administrador<BR>");
-                out.println("<br>");
-                out.println("<INPUT type=\"submit\" value=\"Enviar\">");
-                out.println("</P>");
-                out.println("</FORM>");
-
-                out.println("</body>");
-                out.println("</html>");
-
-            } finally {
-                out.close();
-            }
+            RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/Principal.jsp");
+            reqDispatcher.forward(request, response);
         } else {
             if (request.getSession().getAttribute("rol").equals("Admin")) {
                 RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
