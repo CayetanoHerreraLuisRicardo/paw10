@@ -19,6 +19,7 @@
 
     </head>
     <body>
+        <div id="container">
 
         <h1>Pantalla de usuario invitado</h1>
         <%
@@ -45,6 +46,6 @@
                 <INPUT type="submit" value="Salir">
             </p>
         </form>
-
+        </div>
     </body>
 </html>
