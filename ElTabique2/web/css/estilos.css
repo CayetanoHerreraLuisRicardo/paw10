@@ -28,21 +28,27 @@ a:hover {
 
 #header {
         width: 800px;
-	min-height: 130px;
-	height: 130px;
+	/*min-height: 50px;
+	height: 50px;*/
 	display: block;
         background: #fee;
         margin: 10%;
         margin-top: 15px;
 	margin-bottom: 5px;
-        text-align: left;
+        text-align: center;
         padding: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
          padding-left: 30px;
         -moz-border-radius:15px 55px;
-}
-#header.h1{
-    text-align: center;
-    color: #204a87;
+        -webkit-border-radius:15px 55px;
+         text-align: center;
+         color: #325994;
+         font-size: 180%;
+
+           margin-left: auto ;
+           margin-right: auto ;
 
 }
 
@@ -57,22 +63,38 @@ a:hover {
         padding: 15px;
         padding-left: 30px;
         -moz-border-radius:15px 55px;
+        -webkit-border-radius:15px 55px;
+
 	/*border-bottom: 30px solid #1a3a66;*/
+
+
+
+          margin-left: auto ;
+          margin-right: auto ;
 }
 
 #footer {
+    	width: 800px;
         background: #fee;
 	clear: both;
 	color: #999;
         margin: 10%;
-	border-top: 1px dotted #ddd;
-	padding:20px;
+        margin-top: 8px;
+        margin-bottom: 5px;
+
+        padding: 15px;
         /*padding-left: 80px;*/
-        margin-top: 40px;
+        margin-top: 8px;
 	font-size:80%;
          padding-left: 30px;
         -moz-border-radius:15px 55px;
+        -webkit-border-radius:15px 55px;
+
+          margin-left: auto ;
+          margin-right: auto ;
+
 }
+
 
 
 img {
@@ -95,9 +117,9 @@ h3 a, h1 a, h2 a {
 }
 
 h1 {
-	font-size: 180%;
+	font-size: 150%;
     letter-spacing: -1px;
-	color: whitesmoke;
+    margin: 20px;
 }
 
 h2 {
@@ -115,6 +137,7 @@ h3 {
 label {
 	font-weight: bold;
 }
+
 
 input, button {
 	background-color:#fee;
@@ -164,7 +187,12 @@ input[type="text"]:focus, input[type="password"]:focus, textarea:focus	{
 
 textarea {
 	width: inherit;
-        background-color: #fee;
+        background-color: #fff;
         
+}
+
+#login {
+    width: 30%;
+    margin: auto;
 }
 

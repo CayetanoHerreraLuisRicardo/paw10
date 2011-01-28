@@ -16,7 +16,12 @@
     </head>
     <body>
         <%@ include file="Header.jsp"%>
+
+
         <div id ="container">
+
+        <div id ="login">
+
 
             <FORM action="/eltabique/autenticacion" method="post">
                 <p>
@@ -28,9 +33,14 @@
                 <INPUT type="radio" name="rol" value="Usuario"> Usuario Registrado<BR>
                 <INPUT type="radio" name="rol" value="Admin"> Administrador<BR>
                 <br>
-                <INPUT type="submit" value="Enviar">
+                <INPUT type="submit" value="Entrar">
                 </p>
                 </FORM>
         </div>
+
+        </div>
+
+        <%@ include file="Footer.jsp"%>
+
     </body>
 </html>
