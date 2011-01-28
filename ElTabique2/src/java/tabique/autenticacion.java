@@ -69,7 +69,7 @@ public class autenticacion extends HttpServlet {
 
                     out.println("<html>");
                     out.println("<head>");
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=/eltabique/\">");
                     out.println("</head>");
                     out.println("<body>");
 
@@ -83,7 +83,7 @@ public class autenticacion extends HttpServlet {
                     //reqDispatcher.forward(request,response);
                     out.println("<html>");
                     out.println("<head>");
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=/eltabique/\">");
                     out.println("</head>");
                     out.println("<body>");
                     out.println("<h1>Autenticando usuario " + request.getParameter("nombre") + " como " + request.getParameter("rol") + "</h1>");
@@ -98,13 +98,13 @@ public class autenticacion extends HttpServlet {
                     //reqDispatcher.forward(request,response);
                     out.println("<html>");
                     out.println("<head>");
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=/eltabique/\">");
                     out.println("</head>");
                     out.println("<body>");
                     out.println("<h1>Autenticando usuario " + request.getParameter("nombre") + " como " + "Invitado" + "</h1>");
                     out.println("<h3><font color=#00FF00>Invitado. ¡Bienvenido al Tabiqueeee " + "Invitado" + " " + request.getParameter("nombre") + " !</font></h3>");
                 } else {
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=/eltabique/\">");
                     out.println("<font color=#E42217>Error de autenticacion.</font>");
                 }
             }
