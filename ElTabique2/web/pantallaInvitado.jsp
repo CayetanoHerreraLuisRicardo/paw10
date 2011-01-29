@@ -15,37 +15,46 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <LINK href="css/estilos.css" rel="stylesheet" type="text/css">
-                <LINK href="css/estilos2.css" rel="stylesheet" type="text/css">
+        <LINK href="css/estilos2.css" rel="stylesheet" type="text/css">
 
     </head>
     <body>
+
+        <%@ include file="Header.jsp"%>
+
+
+
         <div id="container">
 
-        <h1>Pantalla de usuario invitado</h1>
-        <%
-                    String nombre = (String) request.getSession().getAttribute("nombre");
+            <h1>Pantalla de usuario invitado</h1>
+            <%
+                        String nombre = (String) request.getSession().getAttribute("nombre");
 
-                    out.println(nombre);
-                    out.println("Invitado");
+                        out.println(nombre);
+                        out.println("Invitado");
 
-                    InvitadoViewHelper helper = new InvitadoViewHelper();
+                        InvitadoViewHelper helper = new InvitadoViewHelper();
 
-                    String codMensajes = helper.getCodigoHTML();
+                        String codMensajes = helper.getCodigoHTML();
 
-                    out.println("<p>");
-                    out.println(codMensajes);
-                    out.println("</p>");
-                    //String info = AdminViewHelper.dameInfo(nom);
+                        out.println("<p>");
+                        out.println(codMensajes);
+                        out.println("</p>");
+                        //String info = AdminViewHelper.dameInfo(nom);
 
-                    //Usuarios usuarios=AdminViewHelper.dameUsuarios(request);
-                    //out.println("Bienvenido a su Tabique:"+usuarios.getRolUsuario("Jorgito"));
-%>
+                        //Usuarios usuarios=AdminViewHelper.dameUsuarios(request);
+                        //out.println("Bienvenido a su Tabique:"+usuarios.getRolUsuario("Jorgito"));
+            %>
 
-        <form action="/eltabique/Salir" method="post">
-            <p>
-                <INPUT type="submit" value="Salir">
-            </p>
-        </form>
+            <form action="/eltabique/Salir" method="post">
+                <p>
+                    <INPUT type="submit" value="Salir">
+                </p>
+            </form>
         </div>
+
+
+        <%@ include file="Footer.jsp"%>
+
     </body>
 </html>

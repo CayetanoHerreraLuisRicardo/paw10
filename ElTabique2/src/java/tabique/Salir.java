@@ -6,6 +6,7 @@ package tabique;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,14 +34,8 @@ public class Salir extends HttpServlet {
         try {
             request.getSession().removeAttribute("autenticado");
             
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Saliendo...</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/inicio");
+            reqDispatcher.forward(request, response);
         } finally {
             out.close();
         }

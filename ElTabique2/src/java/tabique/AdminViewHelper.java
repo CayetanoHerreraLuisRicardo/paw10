@@ -21,7 +21,7 @@ public class AdminViewHelper {
         lista = new DAOUsuarios();
     }
 
-    public String getCodigoHTML() {
+    public ArrayList<Usuario> getUsers() {
         StringBuffer result = new StringBuffer();
 
         CommandFactory factoria = new CommandFactory();
@@ -29,23 +29,10 @@ public class AdminViewHelper {
         ArrayList<Usuario> us = ((CommandGetUsers) comando).getListaUsuarios();
 
         
-        Iterator<Usuario> itr = us.iterator();
-
-        Usuario usuario;
-        while (itr.hasNext()) {
-            usuario = itr.next();
-            result.append("<p>");
-            result.append(usuario.nombre + ". Es " + usuario.rol + ". Convertir en: <br>");
-            result.append("<FORM action=\"/eltabique/GestionUsuarios?user="+usuario.nombre+"\" method=\"post\">");
-            result.append("<INPUT type=\"submit\" name=\"setInvitado\" value=\"Invitado\">");
-            result.append("<INPUT type=\"submit\" name=\"setUsuario\" value=\"Usuario\">");
-            result.append("<INPUT type=\"submit\" name=\"setAdmin\" value=\"Admin\">");
-            result.append("</FORM>");
-            result.append("</p>");
-        }
+        
 
 
-        return result.toString();
+        return us;
     }
 
     public boolean nuevoUsuario(String usuario, String rol) {

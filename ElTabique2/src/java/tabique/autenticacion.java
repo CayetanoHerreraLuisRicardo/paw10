@@ -65,44 +65,24 @@ public class autenticacion extends HttpServlet {
                     request.getSession().setAttribute("autenticado", "true");
                     request.getSession().setAttribute("rol", request.getParameter("rol"));
                     request.getSession().setAttribute("nombre", request.getParameter("nombre"));
-                    // RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
-
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=/eltabique/\">");
-                    out.println("</head>");
-                    out.println("<body>");
-
-                    out.println("<h1>Autenticando usuario " + request.getParameter("nombre") + " como " + request.getParameter("rol") + "</h1>");
-                    out.println("<h3><font color=#00FF00>Login correcto. ¡Bienvenido al Tabiqueeee " + request.getParameter("rol") + " " + request.getParameter("nombre") + " !</font></h3>");
+                    RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/inicio");
+                    reqDispatcher.forward(request, response);
                 } else if (request.getParameter("rol").equals("Usuario")) {//usuario registrado
                     request.getSession().setAttribute("autenticado", "true");
                     request.getSession().setAttribute("rol", request.getParameter("rol"));
                     request.getSession().setAttribute("nombre", request.getParameter("nombre"));
                     //RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaUsuarioRegistrado.jsp");
                     //reqDispatcher.forward(request,response);
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=/eltabique/\">");
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>Autenticando usuario " + request.getParameter("nombre") + " como " + request.getParameter("rol") + "</h1>");
-                    out.println("<h3><font color=#00FF00>Login correcto. ¡Bienvenido al Tabiqueeee " + request.getParameter("rol") + " " + request.getParameter("nombre") + " !</font></h3>");
+                    RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/inicio");
+                    reqDispatcher.forward(request, response);
                 }
             } else {//invitado
                 if (request.getParameter("rol").equals("Invitado")) {
                     request.getSession().setAttribute("autenticado", "true");
                     request.getSession().setAttribute("rol", "Invitado");
                     request.getSession().setAttribute("nombre", request.getParameter("nombre"));
-                    //RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaInvitado.jsp");
-                    //reqDispatcher.forward(request,response);
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=/eltabique/\">");
-                    out.println("</head>");
-                    out.println("<body>");
-                    out.println("<h1>Autenticando usuario " + request.getParameter("nombre") + " como " + "Invitado" + "</h1>");
-                    out.println("<h3><font color=#00FF00>Invitado. ¡Bienvenido al Tabiqueeee " + "Invitado" + " " + request.getParameter("nombre") + " !</font></h3>");
+                    RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/inicio");
+                    reqDispatcher.forward(request, response);
                 } else {
                     out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=/eltabique/\">");
                     out.println("<font color=#E42217>Error de autenticacion.</font>");

@@ -13,47 +13,61 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-                <LINK href="css/estilos.css" rel="stylesheet" type="text/css">
+        <LINK href="css/estilos.css" rel="stylesheet" type="text/css">
 
     </head>
     <body>
-        <h1>Pantalla de usuario registrado</h1>
-
-                        <form action="/eltabique/EnviarMensaje" method="post">
-            <p>
-                <LABEL for="mensaje">Mensaje: </LABEL>
-                <BR>
-                <TEXTAREA name="mensaje" COLS="40" ROWS="2"></TEXTAREA>
-                <BR>
-                <INPUT type="submit" value="Enviar">
-            </p>
-        </form>
-
-        <%
-                    String rol = (String) request.getSession().getAttribute("rol");
-                    String nombre = (String) request.getSession().getAttribute("nombre");
-
-                    //out.println(nombre);
-                    //out.println(rol);
 
 
-                    UsuarioRegistradoViewHelper helper = new UsuarioRegistradoViewHelper();
-
-                    String codMensajes = helper.getCodigoHTML();
-
-                    out.println("<p>");
-                    out.println(codMensajes);
-                    out.println("</p>");
-        %>
+        <%@ include file="Header.jsp"%>
 
 
 
+        <div id="container">
 
-        <form action="/eltabique/Salir" method="post">
-            <p>
-                <INPUT type="submit" value="Salir">
-            </p>
-        </form>
+            <h1>Pantalla de usuario registrado</h1>
+
+            <form action="/eltabique/EnviarMensaje" method="post">
+                <p>
+                    <LABEL for="mensaje">Mensaje: </LABEL>
+                    <BR>
+                    <TEXTAREA name="mensaje" COLS="40" ROWS="2"></TEXTAREA>
+                    <BR>
+                    <INPUT type="submit" value="Enviar">
+                </p>
+            </form>
+
+            <%
+                        String rol = (String) request.getSession().getAttribute("rol");
+                        String nombre = (String) request.getSession().getAttribute("nombre");
+
+                        //out.println(nombre);
+                        //out.println(rol);
+
+
+                        UsuarioRegistradoViewHelper helper = new UsuarioRegistradoViewHelper();
+
+                        String codMensajes = helper.getCodigoHTML();
+
+                        out.println("<p>");
+                        out.println(codMensajes);
+                        out.println("</p>");
+            %>
+
+
+
+
+            <form action="/eltabique/Salir" method="post">
+                <p>
+                    <INPUT type="submit" value="Salir">
+                </p>
+            </form>
+
+
+        </div>
+
+
+        <%@ include file="Footer.jsp"%>
 
     </body>
 </html>

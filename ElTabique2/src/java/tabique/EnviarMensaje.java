@@ -40,11 +40,8 @@ public class EnviarMensaje extends HttpServlet {
             UsuarioRegistradoViewHelper helper = new UsuarioRegistradoViewHelper();
 
             helper.nuevoMensaje(nombre, rol, request.getParameter("mensaje"));
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"0; url=http://localhost:8080/eltabique/\">");
-            out.println("</head>");
-            out.println("</html>");
+            RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/inicio");
+            reqDispatcher.forward(request, response);
 
 
 
