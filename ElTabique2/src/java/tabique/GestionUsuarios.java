@@ -40,11 +40,11 @@ public class GestionUsuarios extends HttpServlet {
                 Command comando = factoria.dameComando("Admin", "AddUser");
                 if ( ! ((CommandAddUser) comando).existente(request.getParameter("nombre"))){
                     if (((CommandAddUser) comando).ejecutar(request.getParameter("nombre"), "Usuario")) {
-                        out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                        out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=inicio\">");
                         out.println("<font color=#00FF00>Usuario creado</font>");
                     }
                 } else {
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=inicio\">");
                     out.println("<font color=#E42217>Usuario ya existente</font>");
                 }
                 out.println("</head>");
@@ -56,11 +56,11 @@ public class GestionUsuarios extends HttpServlet {
                 Command comando = factoria.dameComando("Admin", "DeleteUser");
                 if (((CommandDeleteUser) comando).ejecutar(request.getParameter("nombre"))) {
 
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=inicio\">");
                     out.println("<font color=#00FF00>Usuario borrado</font>");
 
                 } else {
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=inicio\">");
                     out.println("<font color=#E42217>Usuario no existente</font>");
                 }
                 out.println("</head>");
@@ -69,10 +69,10 @@ public class GestionUsuarios extends HttpServlet {
                 CommandFactory factoria = new CommandFactory();
                 Command comando = factoria.dameComando("Admin", "ModifyUser");
                 if (((CommandModifyUser) comando).borrar(request.getParameter("user"))) {
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=inicio\">");
                     out.println("<font color=#00FF00>Usuario modificado</font>");
                  } else {
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=inicio\">");
                     out.println("<font color=#E42217>Usuario no existente</font>");
                     }
                 out.println("</head>");
@@ -80,11 +80,11 @@ public class GestionUsuarios extends HttpServlet {
                 CommandFactory factoria = new CommandFactory();
                 Command comando = factoria.dameComando("Admin", "ModifyUser");
                 if (((CommandModifyUser) comando).ejecutar(request.getParameter("user"), "Usuario")) {
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=inicio\">");
                     out.println("<font color=#00FF00>Usuario modificado</font>");
 
                 } else {
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=inicio\">");
                     out.println("<font color=#E42217>Usuario no existente</font>");
                 }
                 out.println("</head>");
@@ -93,18 +93,18 @@ public class GestionUsuarios extends HttpServlet {
                 CommandFactory factoria = new CommandFactory();
                 Command comando = factoria.dameComando("Admin", "ModifyUser");
                 if (((CommandModifyUser) comando).ejecutar(request.getParameter("user"), "Admin")) {
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=inicio\">");
                     out.println("<font color=#00FF00>Usuario modificado</font>");
 
                 } else {
-                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                    out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=inicio\">");
                     out.println("<font color=#E42217>Usuario ya existente</font>");
                 }
                 out.println("</head>");
 
             } else {
                 out.println("</head>");
-                out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=http://localhost:8080/eltabique/\">");
+                out.println("<meta HTTP-EQUIV=\"REFRESH\" content=\"3; url=inicio\">");
                 out.println("<font color=#E42217>Error: Operación desconocida.</font>");
 
             }

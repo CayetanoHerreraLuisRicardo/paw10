@@ -8,6 +8,8 @@ package tabique;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
+import persistencia.Mensaje;
 
 /**
  *
@@ -26,7 +28,7 @@ public class InvitadoViewHelper {
 
     public String getCodigoHTML(){
         StringBuffer result = new StringBuffer();
-        ArrayList<Mensaje> men = lista.getMensajes();
+        List<Mensaje> men = lista.getMensajes();
         Iterator<Mensaje> itr = men.iterator();
 
         Mensaje mensaje;

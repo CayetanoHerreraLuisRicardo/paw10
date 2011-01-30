@@ -28,6 +28,7 @@
 
             <h1>Pantalla de usuario invitado</h1>
             <%
+
                         String nombre = (String) request.getSession().getAttribute("nombre");
 
                         out.println(nombre);
