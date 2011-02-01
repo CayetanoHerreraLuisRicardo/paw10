@@ -18,7 +18,7 @@ public class CommandAddUser extends Command {
 
     public boolean ejecutar(String nombre, String rol) {
         DAOUsuarios usuarios = new DAOUsuarios();
-        return usuarios.introducirUsuario(nombre, rol);
+        return usuarios.introducirUsuario(nombre.toLowerCase(), rol);
     }
 
     public boolean existente(String nombre){
