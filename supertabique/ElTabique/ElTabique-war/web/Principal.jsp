@@ -17,6 +17,8 @@
         <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.qtip-1.0.0-rc3.min.js"></script>
         <script type="text/javascript" src="js/notificaciones.js"></script>
+
+
     </head>
     <body>
         <%@ include file="Header.jsp"%>
@@ -29,13 +31,13 @@
 
                 <FORM action="autenticacion" method="post" id="formLogin">
                     <p>
-                        <LABEL for="nombre">Nombre: </LABEL>
-                        <INPUT type="text" name="nombre"><BR>
+                        <LABEL for="nombre" id="nombreLabel">Nombre: </LABEL>
+                        <INPUT type="text" name="nombre" id="nombreText"><BR>
                         <br>
 
-                        <INPUT type="radio" name="rol" value="Invitado" checked="true"> Invitado<BR>
-                        <INPUT type="radio" name="rol" value="Usuario"> Usuario Registrado<BR>
-                        <INPUT type="radio" name="rol" value="Admin"> Administrador<BR>
+                        <INPUT type="radio" name="rol" value="Invitado" id="inv"> Invitado  <BR>
+                        <INPUT type="radio" name="rol" value="Usuario" checked="true" id="usr"> Usuario Registrado<BR>
+                        <INPUT type="radio" name="rol" value="Admin" id="adm"> Administrador<BR>
                         <br>
                         <INPUT type="submit" value="Entrar">
                     </p>
@@ -44,7 +46,23 @@
 
         </div>
 
+
+
+
+        <script type="text/javascript">
+            jQuery("#inv").click(function () {
+                jQuery("#nombreText").replaceWith("<INPUT type=\"hidden\" name=\"nombre\" id=\"nombreText\" value=\"Invitado\">");
+            });
+
+            jQuery("#adm, #usr").click(function () {
+                jQuery("#nombreText").replaceWith("<INPUT type=\"text\" name=\"nombre\" id=\"nombreText\">");
+            });
+
+        </script>
+
+
         <%
+
 
                     if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("errorLogin")) {
                         request.getSession().removeAttribute("result");
