@@ -48,7 +48,7 @@
                         //out.println(rol);
 
 
-                        UsuarioRegistradoViewHelper helper = new UsuarioRegistradoViewHelper();
+                        UsuarioRegistradoViewHelper helper = new UsuarioRegistradoViewHelper(request);
 
                         List<Mensaje> mensajes = helper.getMensajes();
                         ListIterator<Mensaje> itr = mensajes.listIterator(mensajes.size());
@@ -59,7 +59,7 @@
                         Mensaje mensaje;
                         while (itr.hasPrevious()) {
                             mensaje = itr.previous();
-                            out.println("<strong class=\"usuario\">"+mensaje.getEmisor() + ": </strong>" + mensaje.getTexto() + " <strong class=\"fecha\">[" + mensaje.getFecha() + "] </strong><br>");
+                            out.println("<strong class=\"usuario\">" + mensaje.getEmisor() + ": </strong>" + mensaje.getTexto() + " <strong class=\"fecha\">[" + mensaje.getFecha() + "] </strong><br>");
                         }
 
                         out.println("</p>");
@@ -79,6 +79,7 @@
 
 
         <%@ include file="Footer.jsp"%>
+
 
     </body>
 </html>

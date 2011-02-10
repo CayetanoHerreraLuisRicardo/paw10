@@ -109,7 +109,7 @@
 
             <%
 
-                        AdminViewHelper helper = new AdminViewHelper();
+                        AdminViewHelper helper = new AdminViewHelper(request);
 
                         List<Usuario> us = helper.getUsers();
 
@@ -137,7 +137,6 @@
 
 
             <%
-
                         if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("errorModif")) {
                             request.getSession().removeAttribute("result");
 
@@ -169,6 +168,7 @@
 
 
         <%@ include file="Footer.jsp"%>
+        
 
 
 

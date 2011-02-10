@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>El Tabique - Inicio de Sesión</title>
-        <link rel="stylesheet" type="text/css" href="css/estilos.css" />
+        <link id="css1" rel="stylesheet" type="text/css" href="css/estilos.css" />
 
         <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.qtip-1.0.0-rc3.min.js"></script>
@@ -76,6 +76,8 @@
         %>
 
         <%@ include file="Footer.jsp"%>
+        <%@ include file="MenuEstilo.jsp"%>
+
 
     </body>
 </html>

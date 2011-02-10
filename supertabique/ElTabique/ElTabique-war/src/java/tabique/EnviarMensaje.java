@@ -32,19 +32,13 @@ public class EnviarMensaje extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            String rol = (String) request.getSession().getAttribute("rol");
             String nombre = (String) request.getSession().getAttribute("nombre");
 
+            UsuarioRegistradoViewHelper helper = new UsuarioRegistradoViewHelper(request);
+            helper.nuevoMensaje(nombre, request.getParameter("mensaje"));
 
-
-            UsuarioRegistradoViewHelper helper = new UsuarioRegistradoViewHelper();
-
-            helper.nuevoMensaje(nombre, rol, request.getParameter("mensaje"));
             RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/inicio");
             reqDispatcher.forward(request, response);
-
-
-
 
 
         } finally {

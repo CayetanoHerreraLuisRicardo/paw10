@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package tabique;
 
 import java.util.ArrayList;
@@ -18,33 +17,26 @@ import persistencia.Usuario;
 public class AdminViewHelper {
 
     DAOUsuarios lista;
+    HttpServletRequest request = null;
 
-    public AdminViewHelper() {
+    public AdminViewHelper(HttpServletRequest request) {
         lista = new DAOUsuarios();
+        this.request = request;
     }
 
     public List<Usuario> getUsers() {
-        StringBuffer result = new StringBuffer();
 
-        CommandFactory factoria = new CommandFactory();
-        Command comando = factoria.dameComando("Admin", "GetUsers");
-        List<Usuario> us = ((CommandGetUsers) comando).getListaUsuarios();
+        DAOUsuarios usuarios = new DAOUsuarios();
+        return usuarios.getListaUsuarios();
 
-        
-        
-
-
-        return us;
     }
 
     public boolean nuevoUsuario(String usuario, String rol) {
 
-        CommandFactory factoria = new CommandFactory();
-        Command comando = factoria.dameComando("Usuario", "AddUser");
-        return ((CommandAddUser) comando).ejecutar(usuario, rol);
+        request.getSession().setAttribute("C_Usuario", usuario);
+        request.getSession().setAttribute("C_Rol", rol);
+        return FrontController.ejecutaComando("AddUser", request);
 
 
     }
-
-
 }

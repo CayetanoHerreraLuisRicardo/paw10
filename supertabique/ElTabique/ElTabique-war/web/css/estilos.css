@@ -28,6 +28,12 @@ a:hover {
 
 #header {
     width: 800px;
+
+    font-family: times, "Times New Roman", times-roman, georgia, serif;
+    line-height: 44px;
+    letter-spacing: -2px;
+    font-weight: bold;
+
     /*min-height: 50px;
 	height: 50px;*/
     display: block;
@@ -222,5 +228,5 @@ textarea {
 input[disabled], input[readonly], select[disabled], select[readonly],
 checkbox[disabled], checkbox[readonly],
 textarea[disabled], textarea[readonly] {
- background-color: #CCC;
+    background-color: #CCC;
 } 

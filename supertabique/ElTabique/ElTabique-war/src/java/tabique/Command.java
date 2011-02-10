@@ -5,12 +5,16 @@
 
 package tabique;
 
+import java.util.Collection;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  *
  * @author jorge y javi
  */
 public abstract class Command {
-    public abstract void ejecutar();
+    public abstract void ejecutar(HttpServletRequest request) throws CommandException;
     public abstract boolean permisos(TipoUsuario tipo);
 
 }

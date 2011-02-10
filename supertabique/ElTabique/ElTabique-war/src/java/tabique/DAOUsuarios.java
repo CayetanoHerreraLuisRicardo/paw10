@@ -24,7 +24,7 @@ public class DAOUsuarios {
     public DAOUsuarios() {
     }
 
-    public boolean autenticar(String nombre, String rol) {
+    public synchronized boolean autenticar(String nombre, String rol) {
         //return Usuarios.getInstance().autenticar(nombre, rol);
 
         boolean result = false;
@@ -45,7 +45,7 @@ public class DAOUsuarios {
 
     }
 
-    public boolean introducirUsuario(String nombre, String rol) {
+    public synchronized boolean introducirUsuario(String nombre, String rol) {
         //return Usuarios.getInstance().introducirUsuario(nombre, rol);
         boolean existe = true;
         Usuario usu = usuarioFacade.find(nombre);
@@ -56,7 +56,7 @@ public class DAOUsuarios {
         return !existe;
     }
 
-    public boolean borrarUsuario(String nombre) {
+    public synchronized boolean borrarUsuario(String nombre) {
         //return Usuarios.getInstance().borrarUsuario(nombre);
         boolean existe = false;
         Usuario usu = usuarioFacade.find(nombre);
@@ -67,13 +67,13 @@ public class DAOUsuarios {
         return existe;
     }
 
-    public String getRolUsuario(String nombre) {
+    public synchronized String getRolUsuario(String nombre) {
         //return Usuarios.getInstance().getRolUsuario(nombre);
         Usuario usu = usuarioFacade.find(nombre);
         return usu.getRol();
     }
 
-    public boolean modificarUsuario(String nombre, String rol) {
+    public synchronized boolean modificarUsuario(String nombre, String rol) {
         
 
         boolean existe = false;
@@ -87,12 +87,12 @@ public class DAOUsuarios {
 
     }
 
-    public List<Usuario> getListaUsuarios() {
+    public synchronized List<Usuario> getListaUsuarios() {
         //return Usuarios.getInstance().getListaUsuarios();
         return usuarioFacade.findAll();
     }
 
-    public boolean existe(String nombre){
+    public synchronized boolean existe(String nombre){
         //return Usuarios.getInstance().existeUsuario(nombre);
         boolean existe = false;
         Usuario usu = usuarioFacade.find(nombre);

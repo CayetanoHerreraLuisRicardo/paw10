@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import javax.servlet.http.HttpServletRequest;
 import persistencia.Mensaje;
 
 /**
@@ -18,9 +19,11 @@ import persistencia.Mensaje;
 public class UsuarioRegistradoViewHelper {
 
     DAOMensajes lista;
+    HttpServletRequest request = null;
 
-    public UsuarioRegistradoViewHelper() {
+    public UsuarioRegistradoViewHelper(HttpServletRequest request) {
         lista = new DAOMensajes();
+        this.request = request;
     }
 
     public List<Mensaje> getMensajes() {
@@ -28,12 +31,11 @@ public class UsuarioRegistradoViewHelper {
         return lista.getMensajes();
     }
 
-    public void nuevoMensaje(String usuario, String rol, String mensaje) {
+    public void nuevoMensaje(String usuario, String mensaje) {
 
-        CommandFactory factoria = new CommandFactory();
-        Command comando = factoria.dameComando("Usuario", "AddMensaje");
-        ((CommandAddMensaje) comando).ejecutar(usuario, mensaje);
-
+        request.getSession().setAttribute("C_Usuario", usuario);
+        request.getSession().setAttribute("C_Mensaje", mensaje);
+        FrontController.ejecutaComando("AddMensaje", request);
 
     }
 }

@@ -1,238 +1,232 @@
-/* 
-    Document   : estilos2
-    Created on : 19-ene-2011, 13:46:47
+/*
+    Document   : estilos
+    Created on : 18-ene-2011, 14:20:51
     Author     : usuario_local
     Description:
         Purpose of the stylesheet follows.
 */
 
-/* 
-   TODO customize this sample style
-   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
-*/
 
-.home-leftbar {
-    min-height: 60px;
-    padding-left: 58px;
-    border-bottom: 1px solid #fff;
-}
 
-.home-leftbar:hover {
-    cursor: pointer;
-    border-bottom: 1px dotted #ddd;
-}
-
-.home-leftbar:hover h3 {
-    color: #c00;
-    text-decoration: underline;
-}
-
-.home-leftbar h3 {
-    border:0;
-    margin-bottom: 0;
-}
-
-#home-get {
-    background: #fff url(images/getit.png) top left no-repeat;
-}
-#home-learn {
-    background: #fff url(images/book.png) top left no-repeat;
-}
-#home-involved {
-    background: #fff url(images/involved.png) top left no-repeat;
-}
-.rn-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.rn-table tr td {
-    border-bottom: 1px dotted #ddd;
-    padding-bottom: 5px;
-    padding-top: 5px;
-}
-
-.rn-monthyear
-{
-    width: 30px;
-    float: left;
-    text-align: left;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    line-height: 95%;
-    color: #666;
-}
-
-.rn-day
-{
-    width: 30px;
-    float: left;
-    margin: -6px 4px 0px 0;
+body {
+    background: #204a87 url(stripes2.png);
+    margin: 0;
+    padding: 0;
     text-align: center;
-    font-size: 28px;
-    color: #666;
+    font-family: arial, helvetica, sans-serif;
+    font-size: normal;
 }
 
-.rn-time
-{
-    display: block;
-    width: 80px;
-    clear: both;
-    letter-spacing: 0.02em;
-    font-size: 12px;
-    color: #ccc;
+a {
+    color: #3465a4;
 }
 
-.rn-date {
-    text-align: right;
+a:hover {
+    color: #204a87;
+    text-decoration: none;
 }
 
-.rn-title {
-    padding-left: 15px;
-    color: #999;
-}
+#header {
+    width: 800px;
 
-.rn-title a {
+    font-family: times, "Times New Roman", times-roman, georgia, serif;
+    line-height: 44px;
+    letter-spacing: -2px;
     font-weight: bold;
-    font-size: 110%;
-    text-decoration: none;
-}
 
-.rn-feeds {
+    /*min-height: 50px;
+	height: 50px;*/
+    display: block;
+    background: #fff;
+    margin: 10%;
+    margin-top: 15px;
+    margin-bottom: 5px;
     text-align: center;
-    font-size: small;
-    padding: 10px;
-    color: #666;
+    padding: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    padding-left: 30px;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px 55px;
+    text-align: center;
+    color: #91B364;
+    font-size: 180%;
+
+    margin-left: auto ;
+    margin-right: auto ;
+
 }
 
-.rn-feeds a {
+
+#container {
+    width: 800px;
+    background: #fff;
+    margin: 10%;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    text-align: left;
+    padding: 15px;
+    padding-left: 30px;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px 55px;
+
+    /*border-bottom: 30px solid #1a3a66;*/
+
+
+
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+#footer {
+    width: 800px;
+    background: #fff;
+    clear: both;
+    color: #999;
+    margin: 10%;
+    margin-top: 8px;
+    margin-bottom: 5px;
+
+    padding: 15px;
+    /*padding-left: 80px;*/
+    margin-top: 8px;
+    font-size:80%;
+    padding-left: 30px;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px 55px;
+
+    margin-left: auto ;
+    margin-right: auto ;
+
+}
+
+
+
+img {
+    border: 0;
+}
+
+p {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: arial, helvetica, sans-serif;
+}
+
+h3 a, h1 a, h2 a {
+    color: whitesmoke;
     text-decoration: none;
 }
 
-.rn-feeds a:hover {
-    text-decoration: underline;
+h1 {
+    font-size: 150%;
+    letter-spacing: -1px;
+    margin: 20px;
 }
 
-.avatar {
-	float: left;
-	margin-right: 5px;
-	margin-bottom: 5px;
-	border: 1px solid #000;
+h2 {
+    font-size: 140%;
+    color: #850;
 }
 
-.blog-entry-nav {
-    margin-bottom: 40px;
+h3 {
+    font-size: 110%;
+    border-bottom: 1px solid #ddd;
+    color: #000;
 }
 
-.float-left {
-    float: left;
-}
-
-.float-right {
-    float: right;
-}
-
-.blog_entry {
-	margin-top: 20px;
-	padding-bottom: 5px;
-	border-bottom: 1px solid #ddd;
+/* BEGIN FORMS */
+label {
+    font-weight: bold;
 }
 
 
-.blog-title {
-	color: #000;
-	font-size: 16px;
-	font-weight: bold;
+input, button {
+    background-color:#fff;
+    color: #555;
+    padding: 2px;
+    font-size: x-small;
 }
 
-.blog-title a {
-	text-decoration: none;
-	color: #000;
-}
-
-.blog-title a:hover {
-	color: #4669b1;
-}
-
-.blog-body {
-	text-align: justify;
-}
-
-.entry-meta {
-	padding: 5px;
-	text-align: right;
-	font-size: xx-small;
-	color: #999;
-}
-
-.blog-tb {
-	border: 1px solid #ddd;
-	background: #fff;
-	padding: 10px;
-	font-size: xx-small;
-}
-
-.blog-comment-title {
-	color: #000;
-	font-weight: bold;
-	font-size: 110%;
-}
-
-.blog-comment-title a, .blog-comment-title a:hover {
-	color: #000;
-	text-decoration: none;
+button, input[type="button"], input[type="submit"]  {
+    background-color: #efefef;
+    color: #666;
+    border: 1px solid #999;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    font-weight: bold;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 
-.calendar {
-	margin-top: 10px;
-	padding: 2px;
-	border: 1px solid #ddd;
-	width: 100%;
+button:hover, input[type="button"]:hover, input[type="submit"]:hover  {
+    background-color: #1c4b7c;
+    color: #fff;
 }
 
-.calendar .monthyear {
-	color: #fff;
-	background: #4669b1;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 2px;
+button:active, input[type="button"]:active, input[type="submit"]:active {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #1c4b7c;
 }
 
-.calendar .weekday {
-	color: #999;
-	background: #eee;
-	font-size: 10px;
-	font-weight: bold;
-	padding: 2px;
+
+input[type="text"], input[type="password"], textarea {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: 1px solid #999;
+    border-left: 1px solid #999;
+    padding:3px;
 }
 
-.calendar .noday {
-	color: #aaa;
-	font-size: 10px;
-	padding: 2px;
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus	{
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #1c4b7c;
 }
 
-.calendar .noday a {
-	color: #aaa;
-	text-decoration: underline;
+textarea {
+    width: inherit;
+    background-color: #fff;
+
 }
 
-.calendar .day {
-	color: #333;
-	font-size: 10px;
-	padding: 2px;
+#login {
+    width: 30%;
+    margin: auto;
 }
 
-.calendar .day a {
-	color: #4669b1;
-	text-decoration: underline;
+
+.fecha {
+    color: #999;
+    font-size:80%;
+
+
 }
 
-.calendar .today {
-	background-color: #4669b1;
-	color: #fff;
-	font-size: 10px;
-	font-weight: bold;
+.usuario {
+    color: #325994;
+    font-size:80%;
+
+
 }
 
+.tipoUsuario {
+    color: #999;
+    font-size:80%;
+
+
+}
+
+
+input[disabled], input[readonly], select[disabled], select[readonly],
+checkbox[disabled], checkbox[readonly],
+textarea[disabled], textarea[readonly] {
+    background-color: #CCC;
+}

@@ -30,13 +30,13 @@ public class DAOMensajes {
     }
 
 
-    public void nuevoMensaje(String usuario,String mensaje){
+    public synchronized void nuevoMensaje(String usuario,String mensaje){
         //Mensajes.getInstance().nuevoMensaje(usuario, mensaje);
         mensajeFacade.create(new Mensaje(usuario,mensaje));
     }
 
 
-    public List<Mensaje> getMensajes(){
+    public synchronized List<Mensaje> getMensajes(){
         //return Mensajes.getInstance().getMensajes();
 
         return mensajeFacade.findAll();
