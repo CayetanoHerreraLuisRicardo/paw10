@@ -38,7 +38,7 @@
 
             <%
 
-                        InvitadoViewHelper helper = new InvitadoViewHelper();
+                        InvitadoViewHelper helper = new InvitadoViewHelper(request);
 
                         List<Mensaje> mensajes = helper.getMensajes();
                         ListIterator<Mensaje> itr = mensajes.listIterator(mensajes.size());
@@ -64,6 +64,7 @@
 
 
         <%@ include file="Footer.jsp"%>
+
 
     </body>
 </html>

@@ -32,55 +32,81 @@ public class GestionUsuarios extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         if (request.getParameter("addUser") != null) {
-            CommandFactory factoria = new CommandFactory();
-            Command comando = factoria.dameComando("Admin", "AddUser");
-            if (!((CommandAddUser) comando).existente(request.getParameter("nombre"))) {
-                if (((CommandAddUser) comando).ejecutar(request.getParameter("nombre"), "Usuario")) {
-                    request.getSession().setAttribute("result", "okAdd");
-                }
+            boolean result = false;
+
+            boolean existente = (new DAOUsuarios()).existe(request.getParameter("nombre"));
+            if (!existente) {
+                request.getSession().setAttribute("C_Usuario", request.getParameter("nombre"));
+                request.getSession().setAttribute("C_Rol", "Usuario");
+                result = FrontController.ejecutaComando("AddUser", request);
+            }
+            if (result == true) {
+                request.getSession().setAttribute("result", "okAdd");
             } else {
                 request.getSession().setAttribute("result", "errorAdd");
             }
 
 
-
         } else if (request.getParameter("deleteUser") != null) {
-            CommandFactory factoria = new CommandFactory();
-            Command comando = factoria.dameComando("Admin", "DeleteUser");
-            if (((CommandDeleteUser) comando).ejecutar(request.getParameter("nombre"))) {
-                request.getSession().setAttribute("result", "okDelete");
+            boolean result = false;
 
+            request.getSession().setAttribute("C_Usuario", request.getParameter("nombre"));
+            result = FrontController.ejecutaComando("DeleteUser", request);
+
+            if (result == true) {
+                request.getSession().setAttribute("result", "okDelete");
             } else {
                 request.getSession().setAttribute("result", "errorDelete");
             }
+
+
         } else if (request.getParameter("setInvitado") != null) {
             //Nota: entedemos que cambiar a invitado es igual a borrar su rol anterior
-            CommandFactory factoria = new CommandFactory();
-            Command comando = factoria.dameComando("Admin", "ModifyUser");
-            if (((CommandModifyUser) comando).borrar(request.getParameter("user"))) {
-                request.getSession().setAttribute("result", "okModif");
-            } else {
-                request.getSession().setAttribute("result", "errorModif");
-            }
-        } else if (request.getParameter("setUsuario") != null) {
-            CommandFactory factoria = new CommandFactory();
-            Command comando = factoria.dameComando("Admin", "ModifyUser");
-            if (((CommandModifyUser) comando).ejecutar(request.getParameter("user"), "Usuario")) {
-                request.getSession().setAttribute("result", "okModif");
 
+            boolean result = false;
+
+            request.getSession().setAttribute("C_Usuario", request.getParameter("user"));
+            result = FrontController.ejecutaComando("DeleteUser", request);
+
+            if (result == true) {
+                request.getSession().setAttribute("result", "okModif");
             } else {
                 request.getSession().setAttribute("result", "errorModif");
             }
+
+
+
+        } else if (request.getParameter("setUsuario") != null) {
+
+            boolean result = false;
+
+            request.getSession().setAttribute("C_Usuario", request.getParameter("user"));
+            request.getSession().setAttribute("C_Rol", "Usuario");
+            result = FrontController.ejecutaComando("ModifyUser", request);
+
+            if (result == true) {
+                request.getSession().setAttribute("result", "okModif");
+            } else {
+                request.getSession().setAttribute("result", "errorModif");
+            }
+
+
 
         } else if (request.getParameter("setAdmin") != null) {
-            CommandFactory factoria = new CommandFactory();
-            Command comando = factoria.dameComando("Admin", "ModifyUser");
-            if (((CommandModifyUser) comando).ejecutar(request.getParameter("user"), "Admin")) {
-                request.getSession().setAttribute("result", "okModif");
 
+            boolean result = false;
+
+            request.getSession().setAttribute("C_Usuario", request.getParameter("user"));
+            request.getSession().setAttribute("C_Rol", "Admin");
+            result = FrontController.ejecutaComando("ModifyUser", request);
+
+            if (result == true) {
+                request.getSession().setAttribute("result", "okModif");
             } else {
                 request.getSession().setAttribute("result", "errorModif");
             }
+
+
 
         } else {
             request.getSession().setAttribute("result", "errorOpDesc");

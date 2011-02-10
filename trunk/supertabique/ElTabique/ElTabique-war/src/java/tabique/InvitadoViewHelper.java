@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import javax.servlet.http.HttpServletRequest;
 import persistencia.Mensaje;
 
 /**
@@ -19,10 +20,12 @@ import persistencia.Mensaje;
 public class InvitadoViewHelper {
     
     DAOMensajes lista;
+    HttpServletRequest request = null;
 
-    public InvitadoViewHelper() {
+    public InvitadoViewHelper(HttpServletRequest request) {
 
         lista = new DAOMensajes();
+        this.request = request;
     }
 
 
