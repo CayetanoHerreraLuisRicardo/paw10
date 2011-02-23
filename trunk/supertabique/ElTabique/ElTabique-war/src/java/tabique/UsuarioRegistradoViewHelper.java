@@ -35,7 +35,7 @@ public class UsuarioRegistradoViewHelper {
 
         request.getSession().setAttribute("C_Usuario", usuario);
         request.getSession().setAttribute("C_Mensaje", mensaje);
-        FrontController.ejecutaComando("AddMensaje", request);
+        CommandManager.ejecutaComando("AddMensaje", request);
 
     }
 }

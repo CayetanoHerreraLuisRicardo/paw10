@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author jorge
  */
-public class FrontController {
+public class CommandManager {
 
     public static boolean ejecutaComando(String nombreComando, HttpServletRequest request) {
         boolean result = false;
