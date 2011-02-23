@@ -12,11 +12,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>El Tabique - Inicio de Sesión</title>
-        <link id="css1" rel="stylesheet" type="text/css" href="css/estilos.css" />
+        <link id="css1" rel="stylesheet" type="text/css" href="css/estilos.css">
 
         <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.qtip-1.0.0-rc3.min.js"></script>
         <script type="text/javascript" src="js/notificaciones.js"></script>
+
 
 
     </head>
@@ -31,12 +32,12 @@
 
                 <FORM action="autenticacion" method="post" id="formLogin">
                     <p>
-                        <LABEL for="nombre" id="nombreLabel">Nombre: </LABEL>
+                        <LABEL id="nombreLabel">Nombre: </LABEL>
                         <INPUT type="text" name="nombre" id="nombreText"><BR>
                         <br>
 
                         <INPUT type="radio" name="rol" value="Invitado" id="inv"> Invitado  <BR>
-                        <INPUT type="radio" name="rol" value="Usuario" checked="true" id="usr"> Usuario Registrado<BR>
+                        <INPUT type="radio" name="rol" value="Usuario" checked id="usr"> Usuario Registrado<BR>
                         <INPUT type="radio" name="rol" value="Admin" id="adm"> Administrador<BR>
                         <br>
                         <INPUT type="submit" value="Entrar">
@@ -63,17 +64,22 @@
 
         <%
 
+                    String error = "0";
 
                     if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("errorLogin")) {
                         request.getSession().removeAttribute("result");
-
-                        out.println(" <script type=\"text/javascript\">");
-                        out.println("mensajeError($(\"#login\"), \"Usuario o rol inválidos.\");");
-                        out.println("</script>");
-
+                        error = "1";
                     }
 
+
         %>
+
+        <script type="text/javascript">
+            var error = "<%=error%>"; 
+            if (error == "1") {
+                mensajeError($("#login"), "Usuario o rol inválidos.");
+            }
+        </script>
 
         <%@ include file="Footer.jsp"%>
         <%@ include file="MenuEstilo.jsp"%>

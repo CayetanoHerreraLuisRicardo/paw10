@@ -42,18 +42,23 @@
 
                         List<Mensaje> mensajes = helper.getMensajes();
                         ListIterator<Mensaje> itr = mensajes.listIterator(mensajes.size());
-
-                        out.println("<p>");
-
-
-                        Mensaje mensaje;
-                        while (itr.hasPrevious()) {
-                            mensaje = itr.previous();
-                            out.println("<strong class=\"usuario\">" + mensaje.getEmisor() + ": </strong>" + mensaje.getTexto() + " <strong class=\"fecha\">[" + mensaje.getFecha() + "] </strong><br>");
-                        }
-
-                        out.println("</p>");
             %>
+
+            <p>
+
+
+                <%
+
+                            Mensaje mensaje;
+                            while (itr.hasPrevious()) {
+                                mensaje = itr.previous();
+                %>
+                <strong class="usuario"><%=mensaje.getEmisor()%>: </strong> <%=mensaje.getTexto()%> <strong class="fecha">[<%=mensaje.getFecha()%>]</strong><br>
+                <%
+                            }
+                %>
+
+            </p>
 
             <form action="Salir" method="post">
                 <p>

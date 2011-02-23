@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : pantallaUsuarioRegistrado
     Created on : 24-nov-2010, 13:35:18
     Author     : usuario_local
@@ -44,27 +44,27 @@
                         String rol = (String) request.getSession().getAttribute("rol");
                         String nombre = (String) request.getSession().getAttribute("nombre");
 
-                        //out.println(nombre);
-                        //out.println(rol);
-
 
                         UsuarioRegistradoViewHelper helper = new UsuarioRegistradoViewHelper(request);
 
                         List<Mensaje> mensajes = helper.getMensajes();
                         ListIterator<Mensaje> itr = mensajes.listIterator(mensajes.size());
-
-                        out.println("<p>");
-
-
-                        Mensaje mensaje;
-                        while (itr.hasPrevious()) {
-                            mensaje = itr.previous();
-                            out.println("<strong class=\"usuario\">" + mensaje.getEmisor() + ": </strong>" + mensaje.getTexto() + " <strong class=\"fecha\">[" + mensaje.getFecha() + "] </strong><br>");
-                        }
-
-                        out.println("</p>");
             %>
+            <p>
 
+
+                <%
+
+                            Mensaje mensaje;
+                            while (itr.hasPrevious()) {
+                                mensaje = itr.previous();
+                %>
+                <strong class="usuario"><%=mensaje.getEmisor()%>: </strong> <%=mensaje.getTexto()%> <strong class="fecha">[<%=mensaje.getFecha()%>]</strong><br>
+                <%
+                            }
+                %>
+
+            </p>
 
 
 

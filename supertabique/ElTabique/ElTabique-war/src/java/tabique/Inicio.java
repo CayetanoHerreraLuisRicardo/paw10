@@ -31,23 +31,21 @@ public class Inicio extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String atr = (String) request.getSession().getAttribute("autenticado");
+        RequestDispatcher reqDispatcher;
         if (atr == null) {
-            RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/Principal.jsp");
-            reqDispatcher.forward(request, response);
+            reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/Principal.jsp");
         } else {
             if (request.getSession().getAttribute("rol").equals("Admin")) {
-                RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
-                reqDispatcher.forward(request, response);
+                reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
             } else if (request.getSession().getAttribute("rol").equals("Usuario")) {
-                RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaUsuarioRegistrado.jsp");
-                reqDispatcher.forward(request, response);
+                reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaUsuarioRegistrado.jsp");
             } else {
-                RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaInvitado.jsp");
-                reqDispatcher.forward(request, response);
+                reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaInvitado.jsp");
             }
         }
+        reqDispatcher.forward(request, response);
+
     }
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 

@@ -38,7 +38,7 @@ public class GestionUsuarios extends HttpServlet {
             if (!existente) {
                 request.getSession().setAttribute("C_Usuario", request.getParameter("nombre"));
                 request.getSession().setAttribute("C_Rol", "Usuario");
-                result = FrontController.ejecutaComando("AddUser", request);
+                result = CommandManager.ejecutaComando("AddUser", request);
             }
             if (result == true) {
                 request.getSession().setAttribute("result", "okAdd");
@@ -51,7 +51,7 @@ public class GestionUsuarios extends HttpServlet {
             boolean result = false;
 
             request.getSession().setAttribute("C_Usuario", request.getParameter("nombre"));
-            result = FrontController.ejecutaComando("DeleteUser", request);
+            result = CommandManager.ejecutaComando("DeleteUser", request);
 
             if (result == true) {
                 request.getSession().setAttribute("result", "okDelete");
@@ -66,7 +66,7 @@ public class GestionUsuarios extends HttpServlet {
             boolean result = false;
 
             request.getSession().setAttribute("C_Usuario", request.getParameter("user"));
-            result = FrontController.ejecutaComando("DeleteUser", request);
+            result = CommandManager.ejecutaComando("DeleteUser", request);
 
             if (result == true) {
                 request.getSession().setAttribute("result", "okModif");
@@ -82,7 +82,7 @@ public class GestionUsuarios extends HttpServlet {
 
             request.getSession().setAttribute("C_Usuario", request.getParameter("user"));
             request.getSession().setAttribute("C_Rol", "Usuario");
-            result = FrontController.ejecutaComando("ModifyUser", request);
+            result = CommandManager.ejecutaComando("ModifyUser", request);
 
             if (result == true) {
                 request.getSession().setAttribute("result", "okModif");
@@ -98,7 +98,7 @@ public class GestionUsuarios extends HttpServlet {
 
             request.getSession().setAttribute("C_Usuario", request.getParameter("user"));
             request.getSession().setAttribute("C_Rol", "Admin");
-            result = FrontController.ejecutaComando("ModifyUser", request);
+            result = CommandManager.ejecutaComando("ModifyUser", request);
 
             if (result == true) {
                 request.getSession().setAttribute("result", "okModif");

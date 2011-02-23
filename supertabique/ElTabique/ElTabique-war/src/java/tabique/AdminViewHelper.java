@@ -35,7 +35,7 @@ public class AdminViewHelper {
 
         request.getSession().setAttribute("C_Usuario", usuario);
         request.getSession().setAttribute("C_Rol", rol);
-        return FrontController.ejecutaComando("AddUser", request);
+        return CommandManager.ejecutaComando("AddUser", request);
 
 
     }
