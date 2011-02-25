@@ -2,6 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package tabique;
 
 import java.io.IOException;
@@ -15,11 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author usuario_local
+ * @author jorge
  */
-@WebServlet(name = "Inicio", urlPatterns = {"/inicio"})
-public class Inicio extends HttpServlet {
-
+@WebServlet(name="CambiaEstilo", urlPatterns={"/CambiaEstilo"})
+public class CambiaEstilo extends HttpServlet {
+   
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -28,27 +29,21 @@ public class Inicio extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String atr = (String) request.getSession().getAttribute("autenticado");
-        RequestDispatcher reqDispatcher;
-        if (atr == null) {
-            reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/Principal.jsp");
-        } else {
-            if (((Rol)request.getSession().getAttribute("rol")).pertenece(TipoUsuario.ADMIN)) {
-                reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
-            } else if (((Rol)request.getSession().getAttribute("rol")).pertenece(TipoUsuario.USUARIO)) {
-                reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaUsuarioRegistrado.jsp");
-            } else {
-                reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaInvitado.jsp");
-            }
+    throws ServletException, IOException {
+
+        if (((String)request.getSession().getAttribute("estilo")).equals("1")) {
+            request.getSession().setAttribute("estilo", "2");
         }
-        if (request.getSession().getAttribute("estilo") == null) {
+        else {
             request.getSession().setAttribute("estilo", "1");
         }
+
+        RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/inicio");
         reqDispatcher.forward(request, response);
 
-    }
+
+        
+    } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
@@ -60,9 +55,9 @@ public class Inicio extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         processRequest(request, response);
-    }
+    } 
 
     /** 
      * Handles the HTTP <code>POST</code> method.
@@ -73,7 +68,7 @@ public class Inicio extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -85,4 +80,5 @@ public class Inicio extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }
