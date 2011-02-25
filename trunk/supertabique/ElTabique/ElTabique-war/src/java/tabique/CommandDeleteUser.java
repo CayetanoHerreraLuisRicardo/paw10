@@ -14,13 +14,17 @@ public class CommandDeleteUser extends Command {
 
     @Override
     public void ejecutar(HttpServletRequest request) throws CommandException {
+        boolean result = false;
         if (request.getSession().getAttribute("C_Usuario") == null) {
             throw new CommandException("Parametros no inicializados.");
         } else {
             DAOUsuarios usuarios = new DAOUsuarios();
-            usuarios.borrarUsuario((String) request.getSession().getAttribute("C_Usuario"));
+            result = usuarios.borrarUsuario((String) request.getSession().getAttribute("C_Usuario"));
         }
         request.getSession().removeAttribute("C_Usuario");
+        if (!result) {
+            throw new CommandException("Usuario no encontrado.");
+        }
     }
 
     @Override

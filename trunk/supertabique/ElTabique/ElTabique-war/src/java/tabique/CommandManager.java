@@ -34,7 +34,7 @@ public class CommandManager {
                     comando.ejecutar(request);
                 } catch (CommandException e) {
                     e.printStackTrace();
-                    result = false;
+                    result = false; 
                 }
             }
 

@@ -54,23 +54,28 @@
             </FORM>
 
 
-                        
+
             <%
 
                         if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("errorAdd")) {
                             request.getSession().removeAttribute("result");
+            %>
 
-                            out.println(" <script type=\"text/javascript\">");
-                            out.println("mensajeError($(\"#formAdd\"), \"Usuario ya existente.\");");
-                            out.println("</script>");
+            <script type="text/javascript">
+                mensajeError($("#formAdd"), "Usuario ya existente.");
+            </script>
 
-                        } else if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("okAdd")) {
-                            request.getSession().removeAttribute("result");
+            <%
 
-                            out.println(" <script type=\"text/javascript\">");
-                            out.println("mostrarNotificacion($(\"#formAdd\"), \"Usuario creado correctamente.\");");
-                            out.println("</script>");
+                                    } else if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("okAdd")) {
+                                        request.getSession().removeAttribute("result");
 
+            %>
+            <script type="text/javascript">
+                mostrarNotificacion($("#formAdd"), "Usuario creado correctamente.");
+            </script>
+
+            <%
                         }
 
             %>
@@ -84,23 +89,26 @@
                 </p>
             </FORM>
 
-
             <%
 
                         if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("errorDelete")) {
                             request.getSession().removeAttribute("result");
+            %>
 
-                            out.println(" <script type=\"text/javascript\">");
-                            out.println("mensajeError($(\"#formAdd\"), \"Usuario no existente.\");");
-                            out.println("</script>");
+            <script type="text/javascript">
+                mensajeError($("#formAdd"), "Usuario no existente."); 
+            </script>
 
-                        } else if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("okDelete")) {
-                            request.getSession().removeAttribute("result");
+            <%
 
-                            out.println(" <script type=\"text/javascript\">");
-                            out.println("mostrarNotificacion($(\"#formAdd\"), \"Usuario borrado correctamente.\");");
-                            out.println("</script>");
+                                    } else if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("okDelete")) {
+                                        request.getSession().removeAttribute("result");
+            %>
 
+            <script type="text/javascript">
+                mostrarNotificacion($("#formAdd"), "Usuario borrado correctamente."); 
+            </script>
+            <%
                         }
 
             %>
@@ -112,66 +120,82 @@
                         AdminViewHelper helper = new AdminViewHelper(request);
 
                         List<Usuario> us = helper.getUsers();
-
-                        out.println("<p>");
-                        Iterator<Usuario> itr = us.iterator();
-
-                        Usuario usuario;
-                        while (itr.hasNext()) {
-                            usuario = itr.next();
-                            out.println("<p>");
-                            out.println("<strong class=\"usuario\">"+usuario.getId() +"</strong>"+ "<strong class=\"tipoUsuario\">  [" + usuario.getRol() + "] </strong> Convertir en: <br>");
-                            out.println("<FORM action=\"GestionUsuarios?user=" + usuario.getId() + "\" method=\"post\">");
-                            out.println("<INPUT type=\"submit\" name=\"setInvitado\" value=\"Invitado\">");
-                            out.println("<INPUT type=\"submit\" name=\"setUsuario\" value=\"Usuario\">");
-                            out.println("<INPUT type=\"submit\" name=\"setAdmin\" value=\"Admin\">");
-                            out.println("</FORM>");
-                            out.println("</p>");
-                        }
-                        out.println("</p>");
-
-                     
-
             %>
 
+            <p>
 
+                <%
+                            Iterator<Usuario> itr = us.iterator();
 
-            <%
-                        if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("errorModif")) {
-                            request.getSession().removeAttribute("result");
+                            Usuario usuario;
+                            while (itr.hasNext()) {
+                                usuario = itr.next();
 
-                            out.println(" <script type=\"text/javascript\">");
-                            out.println("mensajeError($(\"#formAdd\"), \"Usuario no existente.\");");
-                            out.println("</script>");
+                %>
 
-                        } else if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("okModif")) {
-                            request.getSession().removeAttribute("result");
+            <p>
+                <strong class="usuario"><%=usuario.getId()%></strong><strong class="tipoUsuario">  [<%=usuario.getRol()%>] </strong> Convertir en: <br>
+            <FORM action="GestionUsuarios?user=<%=usuario.getId()%>" method="post">
+                <INPUT type="submit" name="setInvitado" value="Invitado">
+                <INPUT type="submit" name="setUsuario" value="Usuario">
+                <INPUT type="submit" name="setAdmin" value="Admin">
+            </FORM>
+        </p>
 
-                            out.println(" <script type=\"text/javascript\">");
-                            out.println("mostrarNotificacion($(\"#formAdd\"), \"Usuario modificado correctamente.\");");
-                            out.println("</script>");
+        <%
+                    }
+        %>
 
-                        }
-
-            %>
-
-            <br>
-
-            <form action="Salir" method="post">
-                <p>
-                    <INPUT type="submit" value="Salir">
-                </p>
-            </form>
-
-
-        </div>
-
-
-        <%@ include file="Footer.jsp"%>
-        
+    </p>
 
 
 
 
-    </body>
+
+
+
+    <%
+                if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("errorModif")) {
+                    request.getSession().removeAttribute("result");
+    %>
+
+    <script type="text/javascript">
+        mensajeError($("#formAdd"), "Usuario no existente.");
+    </script>
+
+    <%
+
+                    } else if ((request.getSession().getAttribute("result") != null) && request.getSession().getAttribute("result").equals("okModif")) {
+                        request.getSession().removeAttribute("result");
+
+    %>
+
+    <script type="text/javascript">
+        mostrarNotificacion($("#formAdd"), "Usuario modificado correctamente.");
+    </script>
+
+    <%
+                }
+
+    %>
+
+    <br>
+
+    <form action="Salir" method="post">
+        <p>
+            <INPUT type="submit" value="Salir">
+        </p>
+    </form>
+
+
+</div>
+
+
+<%@ include file="Footer.jsp"%>
+
+
+
+
+
+</body>
 </html>
