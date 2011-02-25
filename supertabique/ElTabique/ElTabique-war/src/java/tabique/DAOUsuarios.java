@@ -59,7 +59,7 @@ public class DAOUsuarios {
     public synchronized boolean borrarUsuario(String nombre) {
         //return Usuarios.getInstance().borrarUsuario(nombre);
         boolean existe = false;
-        Usuario usu = usuarioFacade.find(nombre);
+        Usuario usu = usuarioFacade.find(nombre); 
         if(usu != null){
             existe = true;
             usuarioFacade.remove(usu);

@@ -52,7 +52,6 @@ public class GestionUsuarios extends HttpServlet {
 
             request.getSession().setAttribute("C_Usuario", request.getParameter("nombre"));
             result = CommandManager.ejecutaComando("DeleteUser", request);
-
             if (result == true) {
                 request.getSession().setAttribute("result", "okDelete");
             } else {
