@@ -12,12 +12,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>El Tabique - Inicio de Sesión</title>
+        
+        <% if (((String)request.getSession().getAttribute("estilo")).equals("1")) {%>
         <link id="css1" rel="stylesheet" type="text/css" href="css/estilos.css">
+        <%  } else {%>
+        <link id="css1" rel="stylesheet" type="text/css" href="css/estilos2.css">
+        <% }%>
 
         <script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
         <script type="text/javascript" src="js/jquery.qtip-1.0.0-rc3.min.js"></script>
         <script type="text/javascript" src="js/notificaciones.js"></script>
-
 
 
     </head>

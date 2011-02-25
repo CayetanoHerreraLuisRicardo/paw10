@@ -17,8 +17,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <LINK href="css/estilos.css" rel="stylesheet" type="text/css">
-        <LINK href="css/estilos2.css" rel="stylesheet" type="text/css">
+        <% if (((String)request.getSession().getAttribute("estilo")).equals("1")) {%>
+        <link id="css1" rel="stylesheet" type="text/css" href="css/estilos.css">
+        <%  } else {%>
+        <link id="css1" rel="stylesheet" type="text/css" href="css/estilos2.css">
+        <% }%>
 
 
     </head>
@@ -69,6 +72,7 @@
 
 
         <%@ include file="Footer.jsp"%>
+        <%@ include file="MenuEstilo.jsp"%>
 
 
     </body>
