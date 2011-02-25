@@ -18,7 +18,7 @@ public class CommandModifyUser extends Command {
             throw new CommandException("Parametros no inicializados.");
         } else {
             DAOUsuarios usuarios = new DAOUsuarios();
-            usuarios.modificarUsuario(((String) request.getSession().getAttribute("C_Usuario")).toLowerCase(), (String) request.getSession().getAttribute("C_Rol"));
+            usuarios.modificarUsuario(((String) request.getSession().getAttribute("C_Usuario")).toLowerCase(), ((Rol)request.getSession().getAttribute("C_Rol")).getTipo());
         }
         request.getSession().removeAttribute("C_Usuario");
         request.getSession().removeAttribute("C_Rol");

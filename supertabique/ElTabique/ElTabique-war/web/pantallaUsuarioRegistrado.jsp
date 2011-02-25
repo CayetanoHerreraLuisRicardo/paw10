@@ -4,6 +4,7 @@
     Author     : usuario_local
 --%>
 
+<%@page import="tabique.Rol"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ListIterator"%>
 <%@page import="persistencia.Mensaje"%>
@@ -41,7 +42,7 @@
             </form>
 
             <%
-                        String rol = (String) request.getSession().getAttribute("rol");
+                        String rol = ((Rol) request.getSession().getAttribute("rol")).toString();
                         String nombre = (String) request.getSession().getAttribute("nombre");
 
 

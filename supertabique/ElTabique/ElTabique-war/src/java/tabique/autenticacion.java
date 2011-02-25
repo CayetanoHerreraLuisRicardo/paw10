@@ -36,8 +36,8 @@ public class autenticacion extends HttpServlet {
         try {
 
             DAOUsuarios usuarios = new DAOUsuarios();
-            usuarios.introducirUsuario("Jorgito", "Admin");
-            usuarios.introducirUsuario("Javi", "Usuario");
+            //usuarios.introducirUsuario("Jorgito", "Admin");
+            //usuarios.introducirUsuario("Javi", "Usuario");
 
             /**
              * @TODO: deberiamos dejar los menos out.println posibles según el profe.
@@ -52,7 +52,7 @@ public class autenticacion extends HttpServlet {
              */
 
 
-            if (usuarios.autenticar(request.getParameter("nombre"), request.getParameter("rol"))) {
+            if (!(Rol.fromString(request.getParameter("rol")).equals(TipoUsuario.INVITADO)) && (usuarios.autenticar(request.getParameter("nombre"), new Rol(Rol.fromString(request.getParameter("rol")))))) {
                 /**
                  * 1)Para cada petición entrante
                 1)Verificar que está autenticada
@@ -65,13 +65,13 @@ public class autenticacion extends HttpServlet {
                 //reenvio al jsp que le corresponda según el tipo de usuario
                 if (request.getParameter("rol").equals("Admin")) {//administrador
                     request.getSession().setAttribute("autenticado", "true");
-                    request.getSession().setAttribute("rol", request.getParameter("rol"));
+                    request.getSession().setAttribute("rol", new Rol(Rol.fromString(request.getParameter("rol"))));
                     request.getSession().setAttribute("nombre", request.getParameter("nombre"));
                     RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/inicio");
                     reqDispatcher.forward(request, response);
                 } else if (request.getParameter("rol").equals("Usuario")) {//usuario registrado
                     request.getSession().setAttribute("autenticado", "true");
-                    request.getSession().setAttribute("rol", request.getParameter("rol"));
+                    request.getSession().setAttribute("rol", new Rol(Rol.fromString(request.getParameter("rol"))));
                     request.getSession().setAttribute("nombre", request.getParameter("nombre"));
                     //RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaUsuarioRegistrado.jsp");
                     //reqDispatcher.forward(request,response);
@@ -81,7 +81,7 @@ public class autenticacion extends HttpServlet {
             } else {//invitado
                 if (request.getParameter("rol").equals("Invitado")) {
                     request.getSession().setAttribute("autenticado", "true");
-                    request.getSession().setAttribute("rol", "Invitado");
+                    request.getSession().setAttribute("rol", new Rol(Rol.fromString("Invitado")));
                     request.getSession().setAttribute("nombre", request.getParameter("nombre"));
                     RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/inicio");
                     reqDispatcher.forward(request, response);
@@ -92,8 +92,6 @@ public class autenticacion extends HttpServlet {
                 }
             }
 
-            out.println("</body>");
-            out.println("</html>");
 
         } finally {
             out.close();

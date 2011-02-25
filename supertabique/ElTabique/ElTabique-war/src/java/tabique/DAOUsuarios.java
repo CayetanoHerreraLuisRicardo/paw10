@@ -24,14 +24,14 @@ public class DAOUsuarios {
     public DAOUsuarios() {
     }
 
-    public synchronized boolean autenticar(String nombre, String rol) {
+    public synchronized boolean autenticar(String nombre, Rol rol) {
         //return Usuarios.getInstance().autenticar(nombre, rol);
 
         boolean result = false;
         Usuario usu = usuarioFacade.find(nombre);
 
         if (usu != null) {
-            if (usu.getRol().equals(rol) || usu.getRol().equals("Admin")) {
+            if (rol.pertenece(Rol.fromString(usu.getRol())) || Rol.fromString(usu.getRol()).equals(TipoUsuario.ADMIN)) {
                 result = true;
                 System.out.println("Autenticación correcta.");
             }
@@ -45,13 +45,13 @@ public class DAOUsuarios {
 
     }
 
-    public synchronized boolean introducirUsuario(String nombre, String rol) {
+    public synchronized boolean introducirUsuario(String nombre, TipoUsuario tipo) {
         //return Usuarios.getInstance().introducirUsuario(nombre, rol);
         boolean existe = true;
         Usuario usu = usuarioFacade.find(nombre);
         if(usu == null){
             existe = false;
-            usuarioFacade.create(new Usuario(nombre,rol));
+            usuarioFacade.create(new Usuario(nombre,Rol.toString(tipo)));
         }
         return !existe;
     }
@@ -67,20 +67,20 @@ public class DAOUsuarios {
         return existe;
     }
 
-    public synchronized String getRolUsuario(String nombre) {
+    public synchronized Rol getRolUsuario(String nombre) {
         //return Usuarios.getInstance().getRolUsuario(nombre);
         Usuario usu = usuarioFacade.find(nombre);
-        return usu.getRol();
+        return new Rol(Rol.fromString(usu.getRol()));
     }
 
-    public synchronized boolean modificarUsuario(String nombre, String rol) {
+    public synchronized boolean modificarUsuario(String nombre, TipoUsuario tipo) {
         
 
         boolean existe = false;
         Usuario usu = usuarioFacade.find(nombre);
         if(usu != null){
             existe = true;
-            usu.setRol(rol);
+            usu.setRol(Rol.toString(tipo));
             usuarioFacade.edit(usu);
         }
         return existe;

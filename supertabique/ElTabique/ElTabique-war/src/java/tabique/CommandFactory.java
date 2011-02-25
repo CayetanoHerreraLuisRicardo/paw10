@@ -24,8 +24,8 @@ public class CommandFactory {
 
     }
 
-    public Command dameComando(String tipoUsuario, String operacion) {
-        String clave = "Command"+operacion + "-" + tipoUsuario;
+    public Command dameComando(TipoUsuario tipoUsuario, String operacion) {
+        String clave = "Command"+operacion + "-" + Rol.toString(tipoUsuario);
         return comandos.get(clave);
     }
 }
