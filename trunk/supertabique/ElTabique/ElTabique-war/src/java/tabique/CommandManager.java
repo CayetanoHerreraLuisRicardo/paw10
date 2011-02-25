@@ -19,13 +19,13 @@ public class CommandManager {
             CommandFactory factoria = new CommandFactory();
             Command comando = null;
 
-            if (request.getSession().getAttribute("rol").equals("Admin")) {
-                comando = factoria.dameComando("Admin", nombreComando);
+            if (((Rol)request.getSession().getAttribute("rol")).pertenece(TipoUsuario.ADMIN)) {
+                comando = factoria.dameComando(TipoUsuario.ADMIN, nombreComando);
 
-            } else if (request.getSession().getAttribute("rol").equals("Usuario")) {
-                comando = factoria.dameComando("Usuario", nombreComando);
+            } else if (((Rol)request.getSession().getAttribute("rol")).pertenece(TipoUsuario.USUARIO)) {
+                comando = factoria.dameComando(TipoUsuario.USUARIO, nombreComando);
             } else {
-                comando = factoria.dameComando("Invitado", nombreComando);
+                comando = factoria.dameComando(TipoUsuario.INVITADO, nombreComando);
             }
             if (comando != null) {
                 result = true;

@@ -37,7 +37,7 @@ public class GestionUsuarios extends HttpServlet {
             boolean existente = (new DAOUsuarios()).existe(request.getParameter("nombre"));
             if (!existente) {
                 request.getSession().setAttribute("C_Usuario", request.getParameter("nombre"));
-                request.getSession().setAttribute("C_Rol", "Usuario");
+                request.getSession().setAttribute("C_Rol", new Rol(TipoUsuario.USUARIO));
                 result = CommandManager.ejecutaComando("AddUser", request);
             }
             if (result == true) {
@@ -80,7 +80,7 @@ public class GestionUsuarios extends HttpServlet {
             boolean result = false;
 
             request.getSession().setAttribute("C_Usuario", request.getParameter("user"));
-            request.getSession().setAttribute("C_Rol", "Usuario");
+            request.getSession().setAttribute("C_Rol", new Rol(TipoUsuario.USUARIO));
             result = CommandManager.ejecutaComando("ModifyUser", request);
 
             if (result == true) {
@@ -96,7 +96,7 @@ public class GestionUsuarios extends HttpServlet {
             boolean result = false;
 
             request.getSession().setAttribute("C_Usuario", request.getParameter("user"));
-            request.getSession().setAttribute("C_Rol", "Admin");
+            request.getSession().setAttribute("C_Rol", new Rol(TipoUsuario.ADMIN));
             result = CommandManager.ejecutaComando("ModifyUser", request);
 
             if (result == true) {

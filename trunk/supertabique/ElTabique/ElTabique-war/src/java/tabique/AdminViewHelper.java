@@ -31,7 +31,7 @@ public class AdminViewHelper {
 
     }
 
-    public boolean nuevoUsuario(String usuario, String rol) {
+    public boolean nuevoUsuario(String usuario, Rol rol) {
 
         request.getSession().setAttribute("C_Usuario", usuario);
         request.getSession().setAttribute("C_Rol", rol);

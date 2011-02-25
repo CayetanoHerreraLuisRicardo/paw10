@@ -35,9 +35,9 @@ public class Inicio extends HttpServlet {
         if (atr == null) {
             reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/Principal.jsp");
         } else {
-            if (request.getSession().getAttribute("rol").equals("Admin")) {
+            if (((Rol)request.getSession().getAttribute("rol")).pertenece(TipoUsuario.ADMIN)) {
                 reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
-            } else if (request.getSession().getAttribute("rol").equals("Usuario")) {
+            } else if (((Rol)request.getSession().getAttribute("rol")).pertenece(TipoUsuario.USUARIO)) {
                 reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaUsuarioRegistrado.jsp");
             } else {
                 reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaInvitado.jsp");
