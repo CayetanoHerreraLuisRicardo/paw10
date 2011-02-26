@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jorge
  */
-@WebServlet(name = "GestionUsuarios", urlPatterns = {"/GestionUsuarios"})
-public class GestionUsuarios extends HttpServlet {
+@WebServlet(name = "ProcessRequest", urlPatterns = {"/ProcessRequest"})
+public class ProcessRequest extends HttpServlet {
 
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -29,7 +29,7 @@ public class GestionUsuarios extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+
 
         if (request.getParameter("addUser") != null) {
             boolean result = false;
@@ -106,14 +106,71 @@ public class GestionUsuarios extends HttpServlet {
             }
 
 
+        } else if (request.getParameter("salir") != null) {
+            request.getSession().removeAttribute("autenticado");
+
+
+
+        } else if (request.getParameter("salir") != null) {
+            request.getSession().removeAttribute("autenticado");
+
+
+        } else if (request.getParameter("enviarMensaje") != null) {
+
+            String nombre = (String) request.getSession().getAttribute("nombre");
+
+            UsuarioRegistradoViewHelper helper = new UsuarioRegistradoViewHelper(request);
+            helper.nuevoMensaje(nombre, request.getParameter("mensaje"));
+
+
+        } else if (request.getParameter("autenticar") != null) {
+            DAOUsuarios usuarios = new DAOUsuarios();
+            if (!(Rol.fromString(request.getParameter("rol")).equals(TipoUsuario.INVITADO)) && (usuarios.autenticar(request.getParameter("nombre"), new Rol(Rol.fromString(request.getParameter("rol")))))) {
+
+                if (request.getParameter("rol").equals("Admin")) {//administrador
+                    request.getSession().setAttribute("autenticado", "true");
+                    request.getSession().setAttribute("rol", new Rol(Rol.fromString(request.getParameter("rol"))));
+                    request.getSession().setAttribute("nombre", request.getParameter("nombre"));
+                } else if (request.getParameter("rol").equals("Usuario")) {//usuario registrado
+                    request.getSession().setAttribute("autenticado", "true");
+                    request.getSession().setAttribute("rol", new Rol(Rol.fromString(request.getParameter("rol"))));
+                    request.getSession().setAttribute("nombre", request.getParameter("nombre"));
+                }
+            } else {//invitado
+                if (request.getParameter("rol").equals("Invitado")) {
+                    request.getSession().setAttribute("autenticado", "true");
+                    request.getSession().setAttribute("rol", new Rol(Rol.fromString("Invitado")));
+                    request.getSession().setAttribute("nombre", request.getParameter("nombre"));
+                } else {
+                    request.getSession().setAttribute("result", "errorLogin");
+                }
+            }
+
+
+        } else if (request.getParameter("cambiarEstilo") != null) {
+
+            if (((String) request.getSession().getAttribute("estilo")).equals("1")) {
+                request.getSession().setAttribute("estilo", "2");
+            } else {
+                request.getSession().setAttribute("estilo", "1");
+            }
+
+
 
         } else {
             request.getSession().setAttribute("result", "errorOpDesc");
 
         }
 
-        RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/pantallaAdmin.jsp");
-        reqDispatcher.forward(request, response);
+        //RequestDispatcher reqDispatcher = getServletConfig().getServletContext().getRequestDispatcher("/inicio");
+        //reqDispatcher.forward(request, response);
+
+        response.sendRedirect("inicio");
+
+
+
+
+
 
     }
 

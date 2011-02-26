@@ -78,9 +78,9 @@
 
             </p>
 
-            <form action="Salir" method="post">
+            <form action="ProcessRequest" method="post">
                 <p>
-                    <INPUT type="submit" value="Salir">
+                    <INPUT type="submit" name ="salir" value="Salir">
                 </p>
             </form>
         </div>
