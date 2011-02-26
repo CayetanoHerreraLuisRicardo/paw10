@@ -64,7 +64,7 @@
 
             %>
 
-            <FORM action="GestionUsuarios" method="post" id="formAdd">
+            <FORM action="ProcessRequest" method="post" id="formAdd">
                 <p>
                     <LABEL for="nombre">Nuevo Usuario: </LABEL>
                     <INPUT type="text" name="nombre">
@@ -100,7 +100,7 @@
             %>
 
 
-            <FORM action="GestionUsuarios" method="post">
+            <FORM action="ProcessRequest" method="post">
                 <p>
                     <LABEL for="nombre">Borrar Usuario: </LABEL>
                     <INPUT type="text" name="nombre">
@@ -154,7 +154,7 @@
 
             <p>
                 <strong class="usuario"><%=usuario.getId()%></strong><strong class="tipoUsuario">  [<%=usuario.getRol()%>] </strong> Convertir en: <br>
-            <FORM action="GestionUsuarios?user=<%=usuario.getId()%>" method="post">
+            <FORM action="ProcessRequest?user=<%=usuario.getId()%>" method="post">
                 <INPUT type="submit" name="setInvitado" value="Invitado">
                 <INPUT type="submit" name="setUsuario" value="Usuario">
                 <INPUT type="submit" name="setAdmin" value="Admin">
@@ -200,9 +200,9 @@
 
     <br>
 
-    <form action="Salir" method="post">
+    <form action="ProcessRequest" method="post">
         <p>
-            <INPUT type="submit" value="Salir">
+            <INPUT type="submit" name="salir" value="Salir">
         </p>
     </form>
 

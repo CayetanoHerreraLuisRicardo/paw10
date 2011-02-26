@@ -50,13 +50,13 @@
 
             <h1>Pantalla de usuario registrado</h1>
 
-            <form action="EnviarMensaje" method="post">
+            <form action="ProcessRequest" method="post">
                 <p>
                     <LABEL for="mensaje">Mensaje: </LABEL>
                     <BR>
                     <TEXTAREA name="mensaje" COLS="40" ROWS="2"></TEXTAREA>
                     <BR>
-                    <INPUT type="submit" value="Enviar">
+                    <INPUT type="submit" name="enviarMensaje" value="Enviar">
                 </p>
             </form>
 
@@ -88,9 +88,9 @@
 
 
 
-            <form action="Salir" method="post">
+            <form action="ProcessRequest" method="post">
                 <p>
-                    <INPUT type="submit" value="Salir">
+                    <INPUT type="submit" name="salir" value="Salir">
                 </p>
             </form>
 

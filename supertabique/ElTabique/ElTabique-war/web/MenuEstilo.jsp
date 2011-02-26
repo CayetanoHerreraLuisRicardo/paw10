@@ -15,9 +15,9 @@
     </script>
 
 
-    <FORM name="cambiarEstilo" action="CambiaEstilo" method="post">
+    <FORM action="ProcessRequest" method="post">
         <p>
-            <input type="submit" value="Cambiar CSS">
+            <input type="submit" name="cambiarEstilo" value="Cambiar CSS">
         </p>
     </FORM>
 

@@ -48,7 +48,7 @@
             <div id ="login">
 
 
-                <FORM action="autenticacion" method="post" id="formLogin">
+                <FORM action="ProcessRequest" method="post" id="formLogin">
                     <p>
                         <LABEL id="nombreLabel">Nombre: </LABEL>
                         <INPUT type="text" name="nombre" id="nombreText"><BR>
@@ -58,7 +58,7 @@
                         <INPUT type="radio" name="rol" value="Usuario" checked id="usr"> Usuario Registrado<BR>
                         <INPUT type="radio" name="rol" value="Admin" id="adm"> Administrador<BR>
                         <br>
-                        <INPUT type="submit" value="Entrar">
+                        <INPUT type="submit" name="autenticar" value="Entrar">
                     </p>
                 </FORM>
             </div>
