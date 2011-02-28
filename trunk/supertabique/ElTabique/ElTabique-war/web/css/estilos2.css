@@ -9,7 +9,7 @@
 
 
 body {
-    background: #204a87 url(stripes2.png);
+    background: #91B364 url(stripes2.png);
     margin: 0;
     padding: 0;
     text-align: center;
@@ -229,4 +229,8 @@ input[disabled], input[readonly], select[disabled], select[readonly],
 checkbox[disabled], checkbox[readonly],
 textarea[disabled], textarea[readonly] {
     background-color: #CCC;
+}
+
+#botonSalir {
+    text-align: center;
 }

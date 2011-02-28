@@ -78,7 +78,7 @@
 
             </p>
 
-            <form action="ProcessRequest" method="post">
+            <form action="ProcessRequest" method="post" id="botonSalir">
                 <p>
                     <INPUT type="submit" name ="salir" value="Salir">
                 </p>
